@@ -30,6 +30,7 @@ struct BusStopInformationRow: View {
             Text(isOnTime() ? "On Time" : "Late")
                 .foregroundStyle(isOnTime() ? .green : .red)
         }
+        .opacity(isArrived(arrive: estimated) ? 0.6 : 1)
     }
     
     private func getETA(arrive: String?) -> String {
@@ -46,6 +47,16 @@ struct BusStopInformationRow: View {
             return "Arrived"
         }
         return String(minute) + " min"
+    }
+    
+    private func isArrived(arrive: String?) -> Bool {
+        guard let arrive = arrive, let arriveDate = arrive.toDate() else {
+            return false
+        }
+        if arriveDate < Date.now {
+            return true
+        }
+        return false
     }
     
     private func isOnTime() -> Bool {

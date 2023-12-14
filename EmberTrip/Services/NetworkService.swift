@@ -72,7 +72,7 @@ extension RestEnum {
         switch self {
         case .getTripInfo(let tripInfoRequest):
             return "trips/\(tripInfoRequest.id)/"
-        case .getQuotes(quotesRequest: let quotesRequest):
+        case .getQuotes:
             return "quotes/"
         }
     }

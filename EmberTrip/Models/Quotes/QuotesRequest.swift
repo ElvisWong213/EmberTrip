@@ -41,17 +41,29 @@ struct QuotesRequest: Codable {
 extension QuotesRequest: MyURLRequestProtocol {
     func getURLQueryItems() -> [URLQueryItem] {
         var queryItems: [URLQueryItem] = []
-        let mirror = Mirror(reflecting: self)
-        for child in mirror.children {
-            guard let label = child.label?.codingKey.stringValue else {
-                continue
+        
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+
+        do {
+            let data = try encoder.encode(self)
+            let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+
+            for (key, value) in dictionary ?? [:] {
+                if let stringValue = value as? String {
+                    queryItems.append(URLQueryItem(name: key, value: stringValue))
+                } else if let intValue = value as? Int {
+                    queryItems.append(URLQueryItem(name: key, value: "\(intValue)"))
+                } else if let dateValue = value as? Double {
+                    let date = Date(timeIntervalSinceReferenceDate: dateValue)
+                    let dateString = ISO8601DateFormatter().string(from: date)
+                    queryItems.append(URLQueryItem(name: key, value: dateString))
+                }
             }
-            if let value = child.value as? String {
-                queryItems.append(URLQueryItem(name: label, value: value))
-            } else if let value = child.value as? Date {
-                queryItems.append(URLQueryItem(name: label, value: value.ISO8601Format()))
-            }
+        } catch {
+            print("Error encoding QuotesRequest: \(error)")
         }
+
         return queryItems
     }
 }

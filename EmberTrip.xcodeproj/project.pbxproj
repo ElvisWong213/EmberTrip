@@ -13,7 +13,6 @@
 		AAD31D5F2B2A28F000EE8410 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD31D5E2B2A28F000EE8410 /* Preview Assets.xcassets */; };
 		AAD31D6E2B2A3BE300EE8410 /* TripInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D6D2B2A3BE300EE8410 /* TripInfoRequest.swift */; };
 		AAD31D702B2A3D0B00EE8410 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D6F2B2A3D0B00EE8410 /* NetworkService.swift */; };
-		AAD31D722B2A493F00EE8410 /* RoutesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D712B2A493F00EE8410 /* RoutesListView.swift */; };
 		AAD31D742B2A5D4500EE8410 /* BusStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D732B2A5D4500EE8410 /* BusStopView.swift */; };
 		AAD31D7B2B2A717900EE8410 /* TripInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = AAD31D792B2A717900EE8410 /* TripInfo.json */; };
 		AAD31D882B2B244600EE8410 /* TripInfoResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D872B2B244600EE8410 /* TripInfoResponses.swift */; };
@@ -23,6 +22,9 @@
 		AAD31D942B2B3EC400EE8410 /* Quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = AAD31D932B2B3EC400EE8410 /* Quotes.json */; };
 		AAD31D962B2B411700EE8410 /* BusStopInformationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D952B2B411700EE8410 /* BusStopInformationRow.swift */; };
 		AAD31D992B2B445000EE8410 /* String++.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D982B2B445000EE8410 /* String++.swift */; };
+		AAD31D9B2B2B4ABF00EE8410 /* BusMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D9A2B2B4ABF00EE8410 /* BusMapView.swift */; };
+		AAD31D9D2B2B52B000EE8410 /* CombineMapListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D9C2B2B52B000EE8410 /* CombineMapListView.swift */; };
+		AAD31DA02B2B635100EE8410 /* CombineMapListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D9F2B2B635100EE8410 /* CombineMapListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +35,6 @@
 		AAD31D5E2B2A28F000EE8410 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AAD31D6D2B2A3BE300EE8410 /* TripInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInfoRequest.swift; sourceTree = "<group>"; };
 		AAD31D6F2B2A3D0B00EE8410 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		AAD31D712B2A493F00EE8410 /* RoutesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesListView.swift; sourceTree = "<group>"; };
 		AAD31D732B2A5D4500EE8410 /* BusStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopView.swift; sourceTree = "<group>"; };
 		AAD31D792B2A717900EE8410 /* TripInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TripInfo.json; sourceTree = "<group>"; };
 		AAD31D872B2B244600EE8410 /* TripInfoResponses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripInfoResponses.swift; sourceTree = "<group>"; };
@@ -43,6 +44,9 @@
 		AAD31D932B2B3EC400EE8410 /* Quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Quotes.json; sourceTree = "<group>"; };
 		AAD31D952B2B411700EE8410 /* BusStopInformationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopInformationRow.swift; sourceTree = "<group>"; };
 		AAD31D982B2B445000EE8410 /* String++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String++.swift"; sourceTree = "<group>"; };
+		AAD31D9A2B2B4ABF00EE8410 /* BusMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusMapView.swift; sourceTree = "<group>"; };
+		AAD31D9C2B2B52B000EE8410 /* CombineMapListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineMapListView.swift; sourceTree = "<group>"; };
+		AAD31D9F2B2B635100EE8410 /* CombineMapListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineMapListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +114,7 @@
 		AAD31D672B2A2ACD00EE8410 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AAD31D712B2A493F00EE8410 /* RoutesListView.swift */,
-				AAD31D732B2A5D4500EE8410 /* BusStopView.swift */,
+				AAD31D9E2B2B633C00EE8410 /* CombineMapList */,
 				AAD31D952B2B411700EE8410 /* BusStopInformationRow.swift */,
 			);
 			path = Views;
@@ -149,6 +152,17 @@
 				AAD31D982B2B445000EE8410 /* String++.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AAD31D9E2B2B633C00EE8410 /* CombineMapList */ = {
+			isa = PBXGroup;
+			children = (
+				AAD31D732B2A5D4500EE8410 /* BusStopView.swift */,
+				AAD31D9A2B2B4ABF00EE8410 /* BusMapView.swift */,
+				AAD31D9C2B2B52B000EE8410 /* CombineMapListView.swift */,
+				AAD31D9F2B2B635100EE8410 /* CombineMapListViewModel.swift */,
+			);
+			path = CombineMapList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,13 +240,15 @@
 				AAD31D8C2B2B349C00EE8410 /* QuotesRequest.swift in Sources */,
 				AAD31D902B2B393600EE8410 /* QuotesResponse.swift in Sources */,
 				AAD31D742B2A5D4500EE8410 /* BusStopView.swift in Sources */,
-				AAD31D722B2A493F00EE8410 /* RoutesListView.swift in Sources */,
+				AAD31DA02B2B635100EE8410 /* CombineMapListViewModel.swift in Sources */,
 				AAD31D702B2A3D0B00EE8410 /* NetworkService.swift in Sources */,
+				AAD31D9B2B2B4ABF00EE8410 /* BusMapView.swift in Sources */,
 				AAD31D882B2B244600EE8410 /* TripInfoResponses.swift in Sources */,
 				AAD31D992B2B445000EE8410 /* String++.swift in Sources */,
 				AAD31D6E2B2A3BE300EE8410 /* TripInfoRequest.swift in Sources */,
 				AAD31D5A2B2A28EF00EE8410 /* ContentView.swift in Sources */,
 				AAD31D962B2B411700EE8410 /* BusStopInformationRow.swift in Sources */,
+				AAD31D9D2B2B52B000EE8410 /* CombineMapListView.swift in Sources */,
 				AAD31D582B2A28EF00EE8410 /* EmberTripApp.swift in Sources */,
 				AAD31D8E2B2B350300EE8410 /* MyURLRequestProtocol.swift in Sources */,
 			);

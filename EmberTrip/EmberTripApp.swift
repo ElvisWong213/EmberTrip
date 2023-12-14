@@ -11,8 +11,7 @@ import SwiftUI
 struct EmberTripApp: App {
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-            BusStopView(tripId: "")
+            ContentView()
         }
     }
 }
