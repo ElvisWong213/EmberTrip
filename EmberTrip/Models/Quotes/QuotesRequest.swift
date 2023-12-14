@@ -10,11 +10,22 @@ import Foundation
 struct QuotesRequest: Codable {
     let destination: Int
     let origin: Int
-    let arrivalDateFrom: Date? = nil
-    let arrivalDateTo: Date? = nil
-    let departureDateFrom: Date? = nil
-    let departureDateTo: Date? = nil
-    let replacingPassCode: String? = nil
+    let arrivalDateFrom: Date? 
+    let arrivalDateTo: Date? 
+    let departureDateFrom: Date? 
+    let departureDateTo: Date? 
+    let replacingPassCode: String? 
+    
+    init(destination: Int, origin: Int, arrivalDateFrom: Date? = nil, arrivalDateTo: Date? = nil, departureDateFrom: Date? = nil, departureDateTo: Date? = nil, replacingPassCode: String? = nil) {
+        self.destination = destination
+        self.origin = origin
+        self.arrivalDateFrom = arrivalDateFrom
+        self.arrivalDateTo = arrivalDateTo
+        self.departureDateFrom = departureDateFrom
+        self.departureDateTo = departureDateTo
+        self.replacingPassCode = replacingPassCode
+    }
+    
     
     enum CodingKeys: String, CodingKey {
         case destination

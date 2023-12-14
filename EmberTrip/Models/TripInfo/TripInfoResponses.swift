@@ -131,6 +131,7 @@ struct Leg: Codable {
     let destination, origin: Destination?
     let tripNotes: TripNotes?
     let type: String?
+    let tripUid: String
 
     enum CodingKeys: String, CodingKey {
         case arrival
@@ -138,6 +139,7 @@ struct Leg: Codable {
         case departure, description, destination, origin
         case tripNotes = "trip_notes"
         case type
+        case tripUid = "trip_uid"
     }
 }
 

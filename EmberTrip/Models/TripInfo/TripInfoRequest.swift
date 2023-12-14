@@ -9,16 +9,30 @@ import Foundation
 
 struct TripInfoRequest: Codable {
     let id: String
-    let all: Bool? = nil
-    let availability: Bool? = nil
-    let description: Bool? = nil
-    let includeCancelledStops: Bool? = nil
-    let passes: Bool? = nil
-    let price: Bool? = nil
-    let route: Bool? = nil
-    let shift: Bool? = nil
-    let updateSkipped: Bool? = nil
-    let vehicle: Bool? = nil
+    let all: Bool?
+    let availability: Bool?
+    let description: Bool?
+    let includeCancelledStops: Bool?
+    let passes: Bool?
+    let price: Bool?
+    let route: Bool?
+    let shift: Bool?
+    let updateSkipped: Bool?
+    let vehicle: Bool?
+    
+    init(id: String, all: Bool? = nil, availability: Bool? = nil, description: Bool? = nil, includeCancelledStops: Bool? = nil, passes: Bool? = nil, price: Bool? = nil, route: Bool? = nil, shift: Bool? = nil, updateSkipped: Bool? = nil, vehicle: Bool? = nil) {
+        self.id = id
+        self.all = all
+        self.availability = availability
+        self.description = description
+        self.includeCancelledStops = includeCancelledStops
+        self.passes = passes
+        self.price = price
+        self.route = route
+        self.shift = shift
+        self.updateSkipped = updateSkipped
+        self.vehicle = vehicle
+    }
     
     enum CodingKeys: String, CodingKey {
         case id, all, availability, description, passes, price, route, shift, vehicle

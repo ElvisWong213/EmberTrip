@@ -8,11 +8,41 @@
 import SwiftUI
 
 struct BusStopView: View {
+    let tripId: String
+    @State var routes: [Route] = []
+    @State private var showActualTime = false
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List {
+                ForEach(routes) { route in
+                    BusStopInformationRow(scheduled: route.departure.scheduled, estimated: route.departure.estimated, location: route.location.name, showActualTime: showActualTime)
+                }
+            }
+            .toolbar {
+                ToolbarItem {
+                    Button {
+                        showActualTime.toggle()
+                    } label: {
+                        Image(systemName: "arrow.left.arrow.right")
+                            .bold(showActualTime)
+                    }
+                }
+            }
+            .task {
+                let requset = TripInfoRequest(id: tripId)
+                do {
+                    let response = try await NetworkService.makeRequest(request: .getTripInfo(tripInfoRequest: requset)) as TripInfoResponses
+                    routes = response.route ?? []
+                    print(response)
+                } catch {
+                    print(error)
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    BusStopView()
+    BusStopView(tripId: "", routes: TripInfoResponses.loadMockData()?.route ?? [])
 }
