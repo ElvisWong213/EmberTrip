@@ -143,7 +143,8 @@ struct Leg: Codable {
 
 // MARK: - Arrival
 struct Arrival: Codable {
-    let actual, estimated, scheduled: String?
+    let actual, estimated: String?
+    let scheduled: String
 }
 
 // MARK: - BoardingData
@@ -203,9 +204,10 @@ struct Destination: Codable {
     let areaID: Int?
     let atcoCode, code, codeDetail, description: String?
     let detailedName, direction, googlePlaceID: String?
-    let id, lat: Int?
+    let id: Int?
+    let lat, lon: Double?
     let localName: String?
-    let locationTimeID, lon: Int?
+    let locationTimeID: Int?
     let name, regionName, type: String?
 
     enum CodingKeys: String, CodingKey {
@@ -261,14 +263,14 @@ struct PricesOriginLocationtimeID: Codable {
 
 // MARK: - Route
 struct Route: Codable, Identifiable {
-    let allowBoarding, allowDropOff: Bool?
-    let arrival: Arrival?
+    let allowBoarding, allowDropOff: Bool
+    let arrival: Arrival
     let bookable: String?
-    let bookingCutOffMins: Int?
-    let departure: Arrival?
-    let id: Int?
-    let location: Location?
-    let preBookedOnly, skipped: Bool?
+    let bookingCutOffMins: Int
+    let departure: Arrival
+    let id: Int
+    let location: Location
+    let preBookedOnly, skipped: Bool
 
     enum CodingKeys: String, CodingKey {
         case allowBoarding = "allow_boarding"
@@ -285,10 +287,12 @@ struct Route: Codable, Identifiable {
 struct Location: Codable {
     let atcoCode: String?
     let bookableFrom, bookableUntil: String?
-    let description, detailedName, direction, googlePlaceID: String?
+    let description, direction, googlePlaceID: String?
+    let detailedName: String
     let id: Int
     let lat, lon: Double?
-    let name, regionName, timezone, type: String?
+    let name, regionName, type: String
+    let timezone: String?
 
     enum CodingKeys: String, CodingKey {
         case atcoCode = "atco_code"
@@ -382,7 +386,7 @@ struct Vehicle: Codable {
 // MARK: - Gps
 struct Gps: Codable {
     let acceleration: Acceleration?
-    let elevation, heading: Int?
+    let elevation, heading: Double?
     let lastUpdated: String?
     let latitude, longitude, speed: Double?
 
@@ -426,7 +430,7 @@ struct BatteryPercentage: Codable {
 
 // MARK: - SecondaryGps
 struct SecondaryGps: Codable {
-    let heading: Int?
+    let heading: Double?
     let lastUpdated: String?
     let latitude, longitude: Double?
 

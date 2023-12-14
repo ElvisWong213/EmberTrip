@@ -11,6 +11,16 @@
 		AAD31D5A2B2A28EF00EE8410 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D592B2A28EF00EE8410 /* ContentView.swift */; };
 		AAD31D5C2B2A28F000EE8410 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD31D5B2B2A28F000EE8410 /* Assets.xcassets */; };
 		AAD31D5F2B2A28F000EE8410 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD31D5E2B2A28F000EE8410 /* Preview Assets.xcassets */; };
+		AAD31D6E2B2A3BE300EE8410 /* TripInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D6D2B2A3BE300EE8410 /* TripInfoRequest.swift */; };
+		AAD31D702B2A3D0B00EE8410 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D6F2B2A3D0B00EE8410 /* NetworkService.swift */; };
+		AAD31D722B2A493F00EE8410 /* RoutesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D712B2A493F00EE8410 /* RoutesListView.swift */; };
+		AAD31D742B2A5D4500EE8410 /* BusStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D732B2A5D4500EE8410 /* BusStopView.swift */; };
+		AAD31D7B2B2A717900EE8410 /* TripInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = AAD31D792B2A717900EE8410 /* TripInfo.json */; };
+		AAD31D882B2B244600EE8410 /* TripInfoResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D872B2B244600EE8410 /* TripInfoResponses.swift */; };
+		AAD31D8C2B2B349C00EE8410 /* QuotesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D8B2B2B349C00EE8410 /* QuotesRequest.swift */; };
+		AAD31D8E2B2B350300EE8410 /* MyURLRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D8D2B2B350300EE8410 /* MyURLRequestProtocol.swift */; };
+		AAD31D902B2B393600EE8410 /* QuotesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D8F2B2B393600EE8410 /* QuotesResponse.swift */; };
+		AAD31D942B2B3EC400EE8410 /* Quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = AAD31D932B2B3EC400EE8410 /* Quotes.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +29,16 @@
 		AAD31D592B2A28EF00EE8410 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AAD31D5B2B2A28F000EE8410 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD31D5E2B2A28F000EE8410 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AAD31D6D2B2A3BE300EE8410 /* TripInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInfoRequest.swift; sourceTree = "<group>"; };
+		AAD31D6F2B2A3D0B00EE8410 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		AAD31D712B2A493F00EE8410 /* RoutesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesListView.swift; sourceTree = "<group>"; };
+		AAD31D732B2A5D4500EE8410 /* BusStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopView.swift; sourceTree = "<group>"; };
+		AAD31D792B2A717900EE8410 /* TripInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TripInfo.json; sourceTree = "<group>"; };
+		AAD31D872B2B244600EE8410 /* TripInfoResponses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripInfoResponses.swift; sourceTree = "<group>"; };
+		AAD31D8B2B2B349C00EE8410 /* QuotesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesRequest.swift; sourceTree = "<group>"; };
+		AAD31D8D2B2B350300EE8410 /* MyURLRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyURLRequestProtocol.swift; sourceTree = "<group>"; };
+		AAD31D8F2B2B393600EE8410 /* QuotesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesResponse.swift; sourceTree = "<group>"; };
+		AAD31D932B2B3EC400EE8410 /* Quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Quotes.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +71,9 @@
 		AAD31D562B2A28EF00EE8410 /* EmberTrip */ = {
 			isa = PBXGroup;
 			children = (
+				AAD31D682B2A35E700EE8410 /* Services */,
+				AAD31D672B2A2ACD00EE8410 /* Views */,
+				AAD31D652B2A2AC100EE8410 /* Models */,
 				AAD31D572B2A28EF00EE8410 /* EmberTripApp.swift */,
 				AAD31D592B2A28EF00EE8410 /* ContentView.swift */,
 				AAD31D5B2B2A28F000EE8410 /* Assets.xcassets */,
@@ -62,9 +85,56 @@
 		AAD31D5D2B2A28F000EE8410 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				AAD31D932B2B3EC400EE8410 /* Quotes.json */,
+				AAD31D792B2A717900EE8410 /* TripInfo.json */,
 				AAD31D5E2B2A28F000EE8410 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AAD31D652B2A2AC100EE8410 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AAD31D8A2B2B348400EE8410 /* Quotes */,
+				AAD31D892B2B347D00EE8410 /* TripInfo */,
+				AAD31D8D2B2B350300EE8410 /* MyURLRequestProtocol.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AAD31D672B2A2ACD00EE8410 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AAD31D712B2A493F00EE8410 /* RoutesListView.swift */,
+				AAD31D732B2A5D4500EE8410 /* BusStopView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AAD31D682B2A35E700EE8410 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AAD31D6F2B2A3D0B00EE8410 /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AAD31D892B2B347D00EE8410 /* TripInfo */ = {
+			isa = PBXGroup;
+			children = (
+				AAD31D872B2B244600EE8410 /* TripInfoResponses.swift */,
+				AAD31D6D2B2A3BE300EE8410 /* TripInfoRequest.swift */,
+			);
+			path = TripInfo;
+			sourceTree = "<group>";
+		};
+		AAD31D8A2B2B348400EE8410 /* Quotes */ = {
+			isa = PBXGroup;
+			children = (
+				AAD31D8B2B2B349C00EE8410 /* QuotesRequest.swift */,
+				AAD31D8F2B2B393600EE8410 /* QuotesResponse.swift */,
+			);
+			path = Quotes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,7 +195,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD31D942B2B3EC400EE8410 /* Quotes.json in Resources */,
 				AAD31D5F2B2A28F000EE8410 /* Preview Assets.xcassets in Resources */,
+				AAD31D7B2B2A717900EE8410 /* TripInfo.json in Resources */,
 				AAD31D5C2B2A28F000EE8410 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +209,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD31D8C2B2B349C00EE8410 /* QuotesRequest.swift in Sources */,
+				AAD31D902B2B393600EE8410 /* QuotesResponse.swift in Sources */,
+				AAD31D742B2A5D4500EE8410 /* BusStopView.swift in Sources */,
+				AAD31D722B2A493F00EE8410 /* RoutesListView.swift in Sources */,
+				AAD31D702B2A3D0B00EE8410 /* NetworkService.swift in Sources */,
+				AAD31D882B2B244600EE8410 /* TripInfoResponses.swift in Sources */,
+				AAD31D6E2B2A3BE300EE8410 /* TripInfoRequest.swift in Sources */,
 				AAD31D5A2B2A28EF00EE8410 /* ContentView.swift in Sources */,
 				AAD31D582B2A28EF00EE8410 /* EmberTripApp.swift in Sources */,
+				AAD31D8E2B2B350300EE8410 /* MyURLRequestProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
