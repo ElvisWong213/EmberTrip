@@ -16,14 +16,15 @@ struct BusMapView: View {
     
     @State private var cameraLockToBus: Bool = false
     
+    @State private var stops: [BusStop] = []
+    @State private var routes: [MKRoute] = []
+    
     var body: some View {
         Map(position: $position) {
-            ForEach(combineMapListViewModel.routes ?? []) { route in
-                let lat = route.location.lat!
-                let lon = route.location.lon!
-                Marker(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon)) {
+            ForEach(stops) { stop in
+                Marker(coordinate: stop.coordinate) {
                     VStack {
-                        Text(route.location.name)
+                        Text(stop.name)
                     }
                 }
             }
@@ -43,10 +44,20 @@ struct BusMapView: View {
                     }
                 }
             }
+            if !routes.isEmpty {
+                ForEach(routes, id: \.self) { route in
+                    MapPolyline(route)
+                        .stroke(.blue, lineWidth: 10)
+                }
+            }
+            
         }
         .onChange(of: combineMapListViewModel.vehicle?.gps) { oldValue, newValue in
             withAnimation {
-                busLocation = CLLocationCoordinate2D(latitude: newValue?.latitude ?? 0, longitude: newValue?.longitude ?? 0)
+                guard let newValue else {
+                    return
+                }
+                busLocation = CLLocationCoordinate2D(latitude: newValue.latitude ?? 0, longitude: newValue.longitude ?? 0)
                 if busLocation != nil && cameraLockToBus {
                     position = .camera(MapCamera(centerCoordinate: busLocation!, distance: 800))
                 }
@@ -57,6 +68,8 @@ struct BusMapView: View {
                 let vehicleLocation = combineMapListViewModel.vehicle?.gps
                 busLocation = CLLocationCoordinate2D(latitude: vehicleLocation?.latitude ?? 0, longitude: vehicleLocation?.longitude ?? 0)
             }
+            loadBusStops()
+            calculateAllRoutes()
         }
         .safeAreaInset(edge: .top) {
             HStack {
@@ -75,6 +88,37 @@ struct BusMapView: View {
                 }
                 .padding()
             }
+        }
+    }
+    
+    private func loadBusStops() {
+        guard let routes = combineMapListViewModel.routes else { return }
+        for route in routes {
+            guard let lat = route.location.lat, let lon = route.location.lon else {
+                continue
+            }
+            stops.append(BusStop(name: route.location.name, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon)))
+        }
+    }
+    
+    private func calculateRoute(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D) {
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: start))
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: end))
+        
+        let directions = MKDirections(request: request)
+        directions.calculate { response, error in
+            if let route = response?.routes.first {
+                self.routes.append(route)
+            }
+        }
+    }
+    
+    private func calculateAllRoutes() {
+        guard stops.count > 1 else { return }
+        self.routes = []
+        for stopIndex in 0..<stops.count - 1 {
+            calculateRoute(start: stops[stopIndex].coordinate, end: stops[stopIndex + 1].coordinate)
         }
     }
 }

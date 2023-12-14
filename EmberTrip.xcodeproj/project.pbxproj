@@ -25,6 +25,7 @@
 		AAD31D9B2B2B4ABF00EE8410 /* BusMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D9A2B2B4ABF00EE8410 /* BusMapView.swift */; };
 		AAD31D9D2B2B52B000EE8410 /* CombineMapListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D9C2B2B52B000EE8410 /* CombineMapListView.swift */; };
 		AAD31DA02B2B635100EE8410 /* CombineMapListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D9F2B2B635100EE8410 /* CombineMapListViewModel.swift */; };
+		AAD31DA22B2BA71F00EE8410 /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31DA12B2BA71F00EE8410 /* BusStop.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		AAD31D9A2B2B4ABF00EE8410 /* BusMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusMapView.swift; sourceTree = "<group>"; };
 		AAD31D9C2B2B52B000EE8410 /* CombineMapListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineMapListView.swift; sourceTree = "<group>"; };
 		AAD31D9F2B2B635100EE8410 /* CombineMapListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineMapListViewModel.swift; sourceTree = "<group>"; };
+		AAD31DA12B2BA71F00EE8410 /* BusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				AAD31D8A2B2B348400EE8410 /* Quotes */,
 				AAD31D892B2B347D00EE8410 /* TripInfo */,
 				AAD31D8D2B2B350300EE8410 /* MyURLRequestProtocol.swift */,
+				AAD31DA12B2BA71F00EE8410 /* BusStop.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD31DA22B2BA71F00EE8410 /* BusStop.swift in Sources */,
 				AAD31D8C2B2B349C00EE8410 /* QuotesRequest.swift in Sources */,
 				AAD31D902B2B393600EE8410 /* QuotesResponse.swift in Sources */,
 				AAD31D742B2A5D4500EE8410 /* BusStopView.swift in Sources */,

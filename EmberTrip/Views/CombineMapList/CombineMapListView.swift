@@ -21,19 +21,23 @@ struct CombineMapListView: View {
 
     var body: some View {
         VStack {
-            BusMapView()
-                .sheet(isPresented: .constant(true), content: {
-                    BusStopView()
-                        .presentationDetents([.fraction(1), .fraction(0.4)])
-                        .presentationBackgroundInteraction(.enabled)
-                        .interactiveDismissDisabled()
-                    
-                })
+            if viewModel.routes != nil && viewModel.vehicle != nil {
+                BusMapView()
+                    .sheet(isPresented: .constant(true), content: {
+                        BusStopView()
+                            .presentationDetents([.fraction(1), .fraction(0.4)])
+                            .presentationBackgroundInteraction(.enabled)
+                            .interactiveDismissDisabled()
+                        
+                    })
+            } else {
+                ProgressView()
+            }
         }
         .environmentObject(viewModel)
-        .onReceive(timer, perform: { _ in
-            viewModel.getData()
-        })
+//        .onReceive(timer, perform: { _ in
+//            viewModel.getData()
+//        })
         .onAppear() {
             viewModel.getData()
         }
