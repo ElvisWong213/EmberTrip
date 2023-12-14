@@ -9,19 +9,25 @@ import Foundation
 
 class CombineMapListViewModel: ObservableObject {
     let tripId: String
-    @Published var tripInfo: TripInfoResponses?
     
-    var mock: Bool = false
+    @Published var routes: [Route]?
+    @Published var vehicle: Vehicle?
     
-    init(tripId: String, tripInfo: TripInfoResponses? = nil) {
+    let mock: Bool
+
+    init(tripId: String, routes: [Route]? = nil, vehicle: Vehicle? = nil) {
         self.tripId = tripId
-        self.tripInfo = tripInfo
+        self.routes = routes
+        self.vehicle = vehicle
+        self.mock = false
     }
     
     init(mock: Bool) {
-        self.mock = true
         self.tripId = ""
-        self.tripInfo = TripInfoResponses.loadMockData()
+        let tripInfo = TripInfoResponses.loadMockData()
+        self.routes = tripInfo?.route
+        self.vehicle = tripInfo?.vehicle
+        self.mock = mock
     }
     
     func getData() {
@@ -34,7 +40,8 @@ class CombineMapListViewModel: ObservableObject {
                 let response = try await NetworkService.makeRequest(request: .getTripInfo(tripInfoRequest: requset)) as TripInfoResponses
                 DispatchQueue.main.async {
                     if response.route != nil {
-                        self.tripInfo = response
+                        self.routes = response.route
+                        self.vehicle = response.vehicle
                     }
                 }
             } catch {

@@ -14,23 +14,25 @@ struct BusStopInformationRow: View {
     var showActualTime: Bool
     
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                HStack {
-                    Text(getETA(arrive: scheduled))
-                        .strikethrough(!isOnTime())
-                    Text(getETA(arrive: estimated))
-                        .foregroundStyle(isOnTime() ? .green : .red)
-                        .opacity(isOnTime() ? 0 : 1)
+        TimelineView(.periodic(from: .now, by: 1)) { _ in
+            HStack {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(getETA(arrive: scheduled))
+                            .strikethrough(!isOnTime())
+                        Text(getETA(arrive: estimated))
+                            .foregroundStyle(isOnTime() ? .green : .red)
+                            .opacity(isOnTime() ? 0 : 1)
+                    }
+                    Text(location ?? "")
+                        .font(.headline)
                 }
-                Text(location ?? "")
-                    .font(.headline)
+                Spacer()
+                Text(isOnTime() ? "On Time" : "Late")
+                    .foregroundStyle(isOnTime() ? .green : .red)
             }
-            Spacer()
-            Text(isOnTime() ? "On Time" : "Late")
-                .foregroundStyle(isOnTime() ? .green : .red)
+            .opacity(isArrived() ? 0.6 : 1)
         }
-        .opacity(isArrived(arrive: estimated) ? 0.6 : 1)
     }
     
     private func getETA(arrive: String?) -> String {
@@ -49,12 +51,16 @@ struct BusStopInformationRow: View {
         return String(minute) + " min"
     }
     
-    private func isArrived(arrive: String?) -> Bool {
-        guard let arrive = arrive, let arriveDate = arrive.toDate() else {
-            return false
+    private func isArrived() -> Bool {
+        if let estimated = estimated, let estimatedDate = estimated.toDate() {
+            if estimatedDate < Date.now {
+                return true
+            }
         }
-        if arriveDate < Date.now {
-            return true
+        if let scheduled = scheduled, let scheduledDate = scheduled.toDate() {
+            if scheduledDate < Date.now {
+                return true
+            }
         }
         return false
     }

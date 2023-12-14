@@ -285,6 +285,12 @@ struct Route: Codable, Identifiable {
     }
 }
 
+extension Route: Equatable {
+    static func == (lhs: Route, rhs: Route) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
 // MARK: - Location
 struct Location: Codable {
     let atcoCode: String?
@@ -396,6 +402,12 @@ struct Gps: Codable {
         case acceleration, elevation, heading
         case lastUpdated = "last_updated"
         case latitude, longitude, speed
+    }
+}
+
+extension Gps: Equatable {
+    static func == (lhs: Gps, rhs: Gps) -> Bool {
+        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
     }
 }
 
