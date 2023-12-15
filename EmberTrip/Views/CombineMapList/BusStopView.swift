@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct BusStopView: View {
     @EnvironmentObject var combineMapListViewModel: CombineMapListViewModel
@@ -16,7 +17,18 @@ struct BusStopView: View {
         NavigationStack {
             List {
                 ForEach(routes) { route in
-                    BusStopInformationRow(scheduled: route.departure.scheduled, estimated: route.departure.estimated, location: route.location.name, showActualTime: showActualTime)
+                    Button {
+                        guard let lat = route.location.lat, let lon = route.location.lon else {
+                            return
+                        }
+                        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                        withAnimation {
+                            combineMapListViewModel.cameraPosition = .item(MKMapItem(placemark: .init(coordinate: coordinate)))
+                        }
+                    } label: {
+                        BusStopInformationRow(scheduled: route.departure.scheduled, estimated: route.departure.estimated, location: route.location.name, showActualTime: showActualTime)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
             .overlay {

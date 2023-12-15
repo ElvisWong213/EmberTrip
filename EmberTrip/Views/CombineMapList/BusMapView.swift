@@ -11,7 +11,6 @@ import MapKit
 struct BusMapView: View {
     @EnvironmentObject var combineMapListViewModel: CombineMapListViewModel
     
-    @State private var position: MapCameraPosition = .automatic
     @State private var busLocation: CLLocationCoordinate2D?
     
     @State private var cameraLockToBus: Bool = false
@@ -20,7 +19,7 @@ struct BusMapView: View {
     @State private var routes: [MKRoute] = []
     
     var body: some View {
-        Map(position: $position) {
+        Map(position: $combineMapListViewModel.cameraPosition) {
             ForEach(stops) { stop in
                 Marker(coordinate: stop.coordinate) {
                     VStack {
@@ -59,7 +58,7 @@ struct BusMapView: View {
                 }
                 busLocation = CLLocationCoordinate2D(latitude: newValue.latitude ?? 0, longitude: newValue.longitude ?? 0)
                 if busLocation != nil && cameraLockToBus {
-                    position = .camera(MapCamera(centerCoordinate: busLocation!, distance: 800))
+                    combineMapListViewModel.cameraPosition = .camera(MapCamera(centerCoordinate: busLocation!, distance: 800))
                 }
             }
         }
@@ -77,7 +76,7 @@ struct BusMapView: View {
                 Button {
                     withAnimation {
                         if busLocation != nil {
-                            position = .camera(MapCamera(centerCoordinate: busLocation!, distance: 800))
+                            combineMapListViewModel.cameraPosition = .camera(MapCamera(centerCoordinate: busLocation!, distance: 800))
                         }
                     }
                     cameraLockToBus.toggle()

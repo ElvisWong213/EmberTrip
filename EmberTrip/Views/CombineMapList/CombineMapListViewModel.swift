@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import MapKit
+import SwiftUI
 
 class CombineMapListViewModel: ObservableObject {
     let tripId: String
     
     @Published var routes: [Route]?
     @Published var vehicle: Vehicle?
+    @Published var cameraPosition: MapCameraPosition
     
     let mock: Bool
 
@@ -20,6 +23,7 @@ class CombineMapListViewModel: ObservableObject {
         self.routes = routes
         self.vehicle = vehicle
         self.mock = false
+        self.cameraPosition = .automatic
     }
     
     init(mock: Bool) {
@@ -28,6 +32,7 @@ class CombineMapListViewModel: ObservableObject {
         self.routes = tripInfo?.route
         self.vehicle = tripInfo?.vehicle
         self.mock = mock
+        self.cameraPosition = .automatic
     }
     
     func getData() {
