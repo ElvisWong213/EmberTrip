@@ -18,56 +18,57 @@ struct BusMapView: View {
     @State private var stops: [BusStop] = []
     @State private var routes: [MKRoute] = []
     
-    @Environment(\.dismiss) var dismiss
-
+    @Environment(\.dismiss) var dissmiss
     
     var body: some View {
-        ZStack {
-            Map(position: $combineMapListViewModel.cameraPosition) {
-                ForEach(stops) { stop in
-                    Marker(coordinate: stop.coordinate) {
-                        VStack {
-                            Text(stop.name)
+        GeometryReader { geo in
+            ZStack(alignment: .top) {
+                Map(position: $combineMapListViewModel.cameraPosition) {
+                    ForEach(stops) { stop in
+                        Marker(coordinate: stop.coordinate) {
+                            VStack {
+                                Text(stop.name)
+                            }
+                        }
+                    }
+                    if busLocation != nil {
+                        Annotation("BUS", coordinate: busLocation!, anchor: .bottom) {
+                            ZStack {
+                                Circle()
+                                    .foregroundStyle(.indigo.opacity(0.5))
+                                    .frame(width: 80, height: 80)
+                                
+                                Image(systemName: "bus")
+                                    .symbolEffect(.pulse.byLayer)
+                                    .padding()
+                                    .foregroundStyle(.white)
+                                    .background(Color.indigo)
+                                    .clipShape(Circle())
+                            }
+                        }
+                    }
+                    if !routes.isEmpty {
+                        ForEach(routes, id: \.self) { route in
+                            MapPolyline(route)
+                                .stroke(.blue, lineWidth: 10)
                         }
                     }
                 }
-                if busLocation != nil {
-                    Annotation("BUS", coordinate: busLocation!, anchor: .bottom) {
-                        ZStack {
-                            Circle()
-                                .foregroundStyle(.indigo.opacity(0.5))
-                                .frame(width: 80, height: 80)
-                            
-                            Image(systemName: "bus")
-                                .symbolEffect(.pulse.byLayer)
-                                .padding()
-                                .foregroundStyle(.white)
-                                .background(Color.indigo)
-                                .clipShape(Circle())
+                ZStack {
+                    HStack {
+                        Button {
+                            dissmiss()
+                        } label: {
+                            Image(systemName: "arrow.left")
+                                .font(.title3)
                         }
+                        Spacer()
                     }
+                    Text("\(combineMapListViewModel.description?.routeNumber ?? ""): \(stops.last?.name ?? "")")
                 }
-                if !routes.isEmpty {
-                    ForEach(routes, id: \.self) { route in
-                        MapPolyline(route)
-                            .stroke(.blue, lineWidth: 10)
-                    }
-                }
-                
-            }
-            VStack {
-                HStack {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "arrowshape.left.circle.fill")
-                            .font(.title3)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .padding()
-                    Spacer()
-                }
-                Spacer()
+                .padding()
+                .frame(width: geo.size.width)
+                .background(.white)
             }
         }
         .toolbar(.hidden, for: .navigationBar)

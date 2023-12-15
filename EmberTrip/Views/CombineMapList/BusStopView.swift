@@ -36,6 +36,7 @@ struct BusStopView: View {
                     Text("Oops, looks like there's no data...")
                 }
             }
+            .navigationTitle("Route Details")
             .toolbar {
                 ToolbarItem {
                     Button {

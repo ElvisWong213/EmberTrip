@@ -12,7 +12,7 @@ struct CombineMapListView: View {
     private let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
     
     init(tripId: String) {
-        if tripId == "" {
+        if tripId == "MOCK" {
             self._viewModel = StateObject(wrappedValue: CombineMapListViewModel(mock: true))
         } else {
             self._viewModel = StateObject(wrappedValue: CombineMapListViewModel(tripId: tripId))
@@ -25,7 +25,7 @@ struct CombineMapListView: View {
                 BusMapView()
                     .sheet(isPresented: .constant(true), content: {
                         BusStopView()
-                            .presentationDetents([.fraction(1), .fraction(0.4), .fraction(0.1)])
+                            .presentationDetents([.fraction(0.8), .fraction(0.4), .fraction(0.1)])
                             .presentationBackgroundInteraction(.enabled)
                             .interactiveDismissDisabled()
                         
@@ -35,9 +35,9 @@ struct CombineMapListView: View {
             }
         }
         .environmentObject(viewModel)
-//        .onReceive(timer, perform: { _ in
-//            viewModel.getData()
-//        })
+        .onReceive(timer, perform: { _ in
+            viewModel.getData()
+        })
         .onAppear() {
             viewModel.getData()
         }
@@ -45,5 +45,5 @@ struct CombineMapListView: View {
 }
 
 #Preview {
-    CombineMapListView(tripId: "")
+    CombineMapListView(tripId: "MOCK")
 }
