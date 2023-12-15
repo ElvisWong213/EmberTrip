@@ -18,39 +18,59 @@ struct BusMapView: View {
     @State private var stops: [BusStop] = []
     @State private var routes: [MKRoute] = []
     
+    @Environment(\.dismiss) var dismiss
+
+    
     var body: some View {
-        Map(position: $combineMapListViewModel.cameraPosition) {
-            ForEach(stops) { stop in
-                Marker(coordinate: stop.coordinate) {
-                    VStack {
-                        Text(stop.name)
+        ZStack {
+            Map(position: $combineMapListViewModel.cameraPosition) {
+                ForEach(stops) { stop in
+                    Marker(coordinate: stop.coordinate) {
+                        VStack {
+                            Text(stop.name)
+                        }
                     }
                 }
-            }
-            if busLocation != nil {
-                Annotation("BUS", coordinate: busLocation!, anchor: .bottom) {
-                    ZStack {
-                        Circle()
-                            .foregroundStyle(.indigo.opacity(0.5))
-                            .frame(width: 80, height: 80)
-                        
-                        Image(systemName: "bus")
-                            .symbolEffect(.pulse.byLayer)
-                            .padding()
-                            .foregroundStyle(.white)
-                            .background(Color.indigo)
-                            .clipShape(Circle())
+                if busLocation != nil {
+                    Annotation("BUS", coordinate: busLocation!, anchor: .bottom) {
+                        ZStack {
+                            Circle()
+                                .foregroundStyle(.indigo.opacity(0.5))
+                                .frame(width: 80, height: 80)
+                            
+                            Image(systemName: "bus")
+                                .symbolEffect(.pulse.byLayer)
+                                .padding()
+                                .foregroundStyle(.white)
+                                .background(Color.indigo)
+                                .clipShape(Circle())
+                        }
                     }
                 }
-            }
-            if !routes.isEmpty {
-                ForEach(routes, id: \.self) { route in
-                    MapPolyline(route)
-                        .stroke(.blue, lineWidth: 10)
+                if !routes.isEmpty {
+                    ForEach(routes, id: \.self) { route in
+                        MapPolyline(route)
+                            .stroke(.blue, lineWidth: 10)
+                    }
                 }
+                
             }
-            
+            VStack {
+                HStack {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "arrowshape.left.circle.fill")
+                            .font(.title3)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .padding()
+                    Spacer()
+                }
+                Spacer()
+            }
         }
+        .toolbar(.hidden, for: .navigationBar)
         .onChange(of: combineMapListViewModel.vehicle?.gps) { oldValue, newValue in
             withAnimation {
                 guard let newValue else {
@@ -70,24 +90,24 @@ struct BusMapView: View {
             loadBusStops()
             calculateAllRoutes()
         }
-        .safeAreaInset(edge: .top) {
-            HStack {
-                Spacer()
-                Button {
-                    withAnimation {
-                        if busLocation != nil {
-                            combineMapListViewModel.cameraPosition = .camera(MapCamera(centerCoordinate: busLocation!, distance: 800))
-                        }
-                    }
-                    cameraLockToBus.toggle()
-                } label: {
-                    Image(systemName: "bus")
-                        .font(.title)
-                        .background(.white)
-                }
-                .padding()
-            }
-        }
+//        .safeAreaInset(edge: .top) {
+//            HStack {
+//                Spacer()
+//                Button {
+//                    withAnimation {
+//                        if busLocation != nil {
+//                            combineMapListViewModel.cameraPosition = .camera(MapCamera(centerCoordinate: busLocation!, distance: 800))
+//                        }
+//                    }
+//                    cameraLockToBus.toggle()
+//                } label: {
+//                    Image(systemName: "bus")
+//                        .font(.title)
+//                        .background(.white)
+//                }
+//                .padding()
+//            }
+//        }
     }
     
     private func loadBusStops() {

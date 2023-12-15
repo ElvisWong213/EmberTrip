@@ -25,7 +25,7 @@ struct CombineMapListView: View {
                 BusMapView()
                     .sheet(isPresented: .constant(true), content: {
                         BusStopView()
-                            .presentationDetents([.fraction(1), .fraction(0.4)])
+                            .presentationDetents([.fraction(1), .fraction(0.4), .fraction(0.1)])
                             .presentationBackgroundInteraction(.enabled)
                             .interactiveDismissDisabled()
                         

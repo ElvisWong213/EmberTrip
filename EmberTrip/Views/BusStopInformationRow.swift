@@ -32,6 +32,7 @@ struct BusStopInformationRow: View {
                     .foregroundStyle(isOnTime() ? .green : .red)
             }
             .opacity(isArrived() ? 0.6 : 1)
+            .contentShape(Rectangle())
         }
     }
     
