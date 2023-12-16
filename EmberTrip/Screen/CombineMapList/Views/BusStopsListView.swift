@@ -35,7 +35,6 @@ struct BusStopsListView: View {
                         Text("Oops, looks like there's no data...")
                     }
                 }
-                .navigationTitle("Route Details")
                 .toolbar {
                     ToolbarItem {
                         Button {
@@ -53,6 +52,8 @@ struct BusStopsListView: View {
                     scrollToSelectedStop(proxy)
                 }
             }
+            .navigationTitle("Route Details")
+            .toolbarTitleDisplayMode(.inline)
         }
     }
     

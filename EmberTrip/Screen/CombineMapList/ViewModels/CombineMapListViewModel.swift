@@ -9,6 +9,7 @@ import Foundation
 import MapKit
 import SwiftUI
 
+@MainActor
 class CombineMapListViewModel: ObservableObject {
     var tripId: String
     
@@ -38,7 +39,6 @@ class CombineMapListViewModel: ObservableObject {
         self.mock = mock
     }
     
-    @MainActor
     func getData() async {
         if mock {
             return

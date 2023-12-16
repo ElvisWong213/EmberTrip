@@ -33,7 +33,7 @@ struct BannerModifier: ViewModifier {
                     .padding()
                     .transition(AnyTransition.move(edge: .top))
                     .onAppear() {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                             self.showBanner = false
                         }
                     }
@@ -51,6 +51,7 @@ extension View {
     }
 }
 
+#if DEBUG
 private struct MyPreview: View {
     @State var show = false
     var body: some View {
@@ -68,3 +69,4 @@ private struct MyPreview: View {
 #Preview {
     MyPreview()
 }
+#endif
