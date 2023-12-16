@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 
 struct BusStop: Identifiable {
-    let id = UUID()
+    let id: Int
     let name: String
     let coordinate: CLLocationCoordinate2D
 }

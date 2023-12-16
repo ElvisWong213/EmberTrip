@@ -28,7 +28,7 @@ struct BusStopInformationRow: View {
                         .font(.headline)
                 }
                 Spacer()
-                Text(isOnTime() ? "On Time" : "Late")
+                Text(isOnTime() ? "On Time" : "Delay")
                     .foregroundStyle(isOnTime() ? .green : .red)
             }
             .opacity(isArrived() ? 0.6 : 1)

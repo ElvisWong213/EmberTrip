@@ -23,13 +23,12 @@ struct BusMapView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .top) {
-                Map(position: $combineMapListViewModel.cameraPosition) {
+                Map(position: $combineMapListViewModel.cameraPosition, selection: $combineMapListViewModel.selectedStopId) {
                     ForEach(stops) { stop in
                         Marker(coordinate: stop.coordinate) {
-                            VStack {
-                                Text(stop.name)
-                            }
+                            Text(stop.name)
                         }
+                        .tag(stop.id)
                     }
                     if busLocation != nil {
                         Annotation("BUS", coordinate: busLocation!, anchor: .bottom) {
@@ -47,6 +46,7 @@ struct BusMapView: View {
                             }
                         }
                     }
+                    // Show routes
                     if !routes.isEmpty {
                         ForEach(routes, id: \.self) { route in
                             MapPolyline(route)
@@ -54,6 +54,8 @@ struct BusMapView: View {
                         }
                     }
                 }
+                
+                // Title bar
                 ZStack {
                     HStack {
                         Button {
@@ -64,11 +66,12 @@ struct BusMapView: View {
                         }
                         Spacer()
                     }
-                    Text("\(combineMapListViewModel.description?.routeNumber ?? ""): \(stops.last?.name ?? "")")
+                    // Title
+                    Text("\(combineMapListViewModel.description?.routeNumber ?? "") \(Image(systemName: "chevron.forward.circle.fill")) \(stops.last?.name ?? "")")
                 }
                 .padding()
                 .frame(width: geo.size.width)
-                .background(.white)
+                .background()
             }
         }
         .toolbar(.hidden, for: .navigationBar)
@@ -117,7 +120,7 @@ struct BusMapView: View {
             guard let lat = route.location.lat, let lon = route.location.lon else {
                 continue
             }
-            stops.append(BusStop(name: route.location.name, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon)))
+            stops.append(BusStop(id: route.id, name: route.location.name, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon)))
         }
     }
     

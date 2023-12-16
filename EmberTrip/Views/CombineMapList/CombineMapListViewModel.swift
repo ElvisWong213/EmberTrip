@@ -16,6 +16,7 @@ class CombineMapListViewModel: ObservableObject {
     @Published var vehicle: Vehicle?
     @Published var description: TripInfoResponsesDescription?
     @Published var cameraPosition: MapCameraPosition
+    @Published var selectedStopId: Int?
     
     let mock: Bool
 
@@ -24,6 +25,7 @@ class CombineMapListViewModel: ObservableObject {
         self.routes = nil
         self.vehicle = nil
         self.description = nil
+        self.selectedStopId = nil
         self.mock = false
         self.cameraPosition = .automatic
     }
@@ -34,6 +36,7 @@ class CombineMapListViewModel: ObservableObject {
         self.routes = tripInfo?.route
         self.vehicle = tripInfo?.vehicle
         self.description = tripInfo?.description
+        self.selectedStopId = nil
         self.mock = mock
         self.cameraPosition = .automatic
     }
