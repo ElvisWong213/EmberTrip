@@ -26,6 +26,7 @@ struct Quotes: Identifiable, Codable {
     
 }
 
+#if DEBUG
 extension QuotesResponse {
     static func loadMockData() -> QuotesResponse? {
         // Get the file URL of the JSON file
@@ -34,20 +35,7 @@ extension QuotesResponse {
             return nil
         }
         
-        do {
-            // Read the contents of the JSON file
-            let data = try Data(contentsOf: fileURL)
-            
-            // Create a JSONDecoder instance
-            let decoder = JSONDecoder()
-            
-            // Decode the JSON data into the MyData struct
-            let decodedData = try decoder.decode(QuotesResponse.self, from: data)
-            
-            return decodedData
-        } catch {
-            print("Error decoding JSON: \(error)")
-        }
-        return nil
+        return NetworkService.loadDataFromFile(fileURL: fileURL, type: QuotesResponse.self)
     }
 }
+#endif

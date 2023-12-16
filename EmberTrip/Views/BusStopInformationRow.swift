@@ -56,11 +56,15 @@ struct BusStopInformationRow: View {
         if let estimated = estimated, let estimatedDate = estimated.toDate() {
             if estimatedDate < Date.now {
                 return true
+            } else {
+                return false
             }
         }
         if let scheduled = scheduled, let scheduledDate = scheduled.toDate() {
             if scheduledDate < Date.now {
                 return true
+            } else {
+                return false
             }
         }
         return false

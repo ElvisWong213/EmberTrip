@@ -24,7 +24,7 @@ struct CombineMapListView: View {
             if viewModel.routes != nil && viewModel.vehicle != nil {
                 BusMapView()
                     .sheet(isPresented: .constant(true), content: {
-                        BusStopView()
+                        BusStopsListView()
                             .presentationDetents([.fraction(0.8), .fraction(0.4), .fraction(0.1)])
                             .presentationBackgroundInteraction(.enabled)
                             .interactiveDismissDisabled()

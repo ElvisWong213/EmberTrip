@@ -18,6 +18,7 @@ struct TripInfoResponses: Codable {
     let vehicle: Vehicle?
 }
 
+#if DEBUG
 extension TripInfoResponses {
     static func loadMockData() -> TripInfoResponses? {
         // Get the file URL of the JSON file
@@ -26,23 +27,10 @@ extension TripInfoResponses {
             return nil
         }
         
-        do {
-            // Read the contents of the JSON file
-            let data = try Data(contentsOf: fileURL)
-            
-            // Create a JSONDecoder instance
-            let decoder = JSONDecoder()
-            
-            // Decode the JSON data into the MyData struct
-            let decodedData = try decoder.decode(TripInfoResponses.self, from: data)
-            
-            return decodedData
-        } catch {
-            print("Error decoding JSON: \(error)")
-        }
-        return nil
+        return NetworkService.loadDataFromFile(fileURL: fileURL, type: TripInfoResponses.self)
     }
 }
+#endif
 
 // MARK: - Availability
 struct Availability: Codable {

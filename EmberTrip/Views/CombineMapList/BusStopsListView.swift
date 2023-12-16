@@ -1,5 +1,5 @@
 //
-//  BusStopView.swift
+//  BusStopsListView.swift
 //  EmberTrip
 //
 //  Created by Elvis on 13/12/2023.
@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-struct BusStopView: View {
+struct BusStopsListView: View {
     @EnvironmentObject var combineMapListVM: CombineMapListViewModel
     @State private var showActualTime = false
     
@@ -20,7 +20,10 @@ struct BusStopView: View {
                         Image(systemName: "bus")
                             .symbolEffect(.pulse)
                             .opacity(stop.id == getNextStopId() ? 1 : 0)
-                        BusStopInformationRow(scheduled: stop.arrival.scheduled, estimated: stop.arrival.estimated, location: stop.location.name, showActualTime: showActualTime)
+                        BusStopInformationRow(scheduled: stop.arrival.scheduled, 
+                                              estimated: stop.arrival.estimated,
+                                              location: stop.location.name,
+                                              showActualTime: showActualTime)
                     }
                     .id(stop.id)
                     .onTapGesture {
@@ -44,15 +47,10 @@ struct BusStopView: View {
                     }
                 }
                 .onAppear() {
-                    withAnimation {
-                        combineMapListVM.selectedStopId = getNextStopId()
-                        proxy.scrollTo(combineMapListVM.selectedStopId)
-                    }
+                    setupInitialSelectedStop(proxy)
                 }
-                .onChange(of: combineMapListVM.selectedStopId) { oldValue, newValue in
-                    withAnimation {
-                        proxy.scrollTo(newValue)
-                    }
+                .onChange(of: combineMapListVM.selectedStopId) {
+                    scrollToSelectedStop(proxy)
                 }
             }
         }
@@ -73,17 +71,33 @@ struct BusStopView: View {
         guard let stops = combineMapListVM.routes else {
             return nil
         }
-        let times = stops.compactMap{ $0.arrival.estimated?.toDate() }.map { Float(Date.now.distance(to: $0)) }
-        for (index, time) in times.enumerated() {
-            if time > 0 {
+        let estimatedTimes = stops.compactMap{ $0.arrival.estimated?.toDate() }.map { Float(Date.now.distance(to: $0)) }
+        for (index, timeDiff) in estimatedTimes.enumerated() {
+            if timeDiff > 0 {
                 return stops[index + 1].id
             }
         }
         return nil
     }
+    
+    private func setupInitialSelectedStop(_ proxy: ScrollViewProxy) {
+        guard let nextStopId = getNextStopId() else {
+            return
+        }
+        withAnimation {
+            combineMapListVM.selectedStopId = nextStopId
+            proxy.scrollTo(nextStopId)
+        }
+    }
+
+    private func scrollToSelectedStop(_ proxy: ScrollViewProxy) {
+        withAnimation {
+            proxy.scrollTo(combineMapListVM.selectedStopId)
+        }
+    }
 }
 
 #Preview {
-    BusStopView()
+    BusStopsListView()
         .environmentObject(CombineMapListViewModel(mock: true))
 }

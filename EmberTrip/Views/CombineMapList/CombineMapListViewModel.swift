@@ -54,6 +54,7 @@ class CombineMapListViewModel: ObservableObject {
                         self.routes = response.route
                         self.vehicle = response.vehicle
                         self.description = response.description
+                        try? NetworkService.saveDataToFile(data: response)
                     }
                 }
             } catch {

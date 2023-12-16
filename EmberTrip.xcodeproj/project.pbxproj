@@ -13,7 +13,7 @@
 		AAD31D5F2B2A28F000EE8410 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD31D5E2B2A28F000EE8410 /* Preview Assets.xcassets */; };
 		AAD31D6E2B2A3BE300EE8410 /* TripInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D6D2B2A3BE300EE8410 /* TripInfoRequest.swift */; };
 		AAD31D702B2A3D0B00EE8410 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D6F2B2A3D0B00EE8410 /* NetworkService.swift */; };
-		AAD31D742B2A5D4500EE8410 /* BusStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D732B2A5D4500EE8410 /* BusStopView.swift */; };
+		AAD31D742B2A5D4500EE8410 /* BusStopsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D732B2A5D4500EE8410 /* BusStopsListView.swift */; };
 		AAD31D7B2B2A717900EE8410 /* TripInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = AAD31D792B2A717900EE8410 /* TripInfo.json */; };
 		AAD31D882B2B244600EE8410 /* TripInfoResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D872B2B244600EE8410 /* TripInfoResponses.swift */; };
 		AAD31D8C2B2B349C00EE8410 /* QuotesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D8B2B2B349C00EE8410 /* QuotesRequest.swift */; };
@@ -36,7 +36,7 @@
 		AAD31D5E2B2A28F000EE8410 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AAD31D6D2B2A3BE300EE8410 /* TripInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInfoRequest.swift; sourceTree = "<group>"; };
 		AAD31D6F2B2A3D0B00EE8410 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		AAD31D732B2A5D4500EE8410 /* BusStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopView.swift; sourceTree = "<group>"; };
+		AAD31D732B2A5D4500EE8410 /* BusStopsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopsListView.swift; sourceTree = "<group>"; };
 		AAD31D792B2A717900EE8410 /* TripInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TripInfo.json; sourceTree = "<group>"; };
 		AAD31D872B2B244600EE8410 /* TripInfoResponses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripInfoResponses.swift; sourceTree = "<group>"; };
 		AAD31D8B2B2B349C00EE8410 /* QuotesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesRequest.swift; sourceTree = "<group>"; };
@@ -108,7 +108,6 @@
 			children = (
 				AAD31D8A2B2B348400EE8410 /* Quotes */,
 				AAD31D892B2B347D00EE8410 /* TripInfo */,
-				AAD31D8D2B2B350300EE8410 /* MyURLRequestProtocol.swift */,
 				AAD31DA12B2BA71F00EE8410 /* BusStop.swift */,
 			);
 			path = Models;
@@ -126,6 +125,7 @@
 		AAD31D682B2A35E700EE8410 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				AAD31D8D2B2B350300EE8410 /* MyURLRequestProtocol.swift */,
 				AAD31D6F2B2A3D0B00EE8410 /* NetworkService.swift */,
 			);
 			path = Services;
@@ -143,8 +143,8 @@
 		AAD31D8A2B2B348400EE8410 /* Quotes */ = {
 			isa = PBXGroup;
 			children = (
-				AAD31D8B2B2B349C00EE8410 /* QuotesRequest.swift */,
 				AAD31D8F2B2B393600EE8410 /* QuotesResponse.swift */,
+				AAD31D8B2B2B349C00EE8410 /* QuotesRequest.swift */,
 			);
 			path = Quotes;
 			sourceTree = "<group>";
@@ -160,7 +160,7 @@
 		AAD31D9E2B2B633C00EE8410 /* CombineMapList */ = {
 			isa = PBXGroup;
 			children = (
-				AAD31D732B2A5D4500EE8410 /* BusStopView.swift */,
+				AAD31D732B2A5D4500EE8410 /* BusStopsListView.swift */,
 				AAD31D9A2B2B4ABF00EE8410 /* BusMapView.swift */,
 				AAD31D9C2B2B52B000EE8410 /* CombineMapListView.swift */,
 				AAD31D9F2B2B635100EE8410 /* CombineMapListViewModel.swift */,
@@ -243,7 +243,7 @@
 				AAD31DA22B2BA71F00EE8410 /* BusStop.swift in Sources */,
 				AAD31D8C2B2B349C00EE8410 /* QuotesRequest.swift in Sources */,
 				AAD31D902B2B393600EE8410 /* QuotesResponse.swift in Sources */,
-				AAD31D742B2A5D4500EE8410 /* BusStopView.swift in Sources */,
+				AAD31D742B2A5D4500EE8410 /* BusStopsListView.swift in Sources */,
 				AAD31DA02B2B635100EE8410 /* CombineMapListViewModel.swift in Sources */,
 				AAD31D702B2A3D0B00EE8410 /* NetworkService.swift in Sources */,
 				AAD31D9B2B2B4ABF00EE8410 /* BusMapView.swift in Sources */,
