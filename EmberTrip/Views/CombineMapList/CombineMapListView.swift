@@ -34,12 +34,15 @@ struct CombineMapListView: View {
                 ProgressView()
             }
         }
+        .banner(showBanner: $viewModel.showBanner)
         .environmentObject(viewModel)
-        .onReceive(timer, perform: { _ in
-            viewModel.getData()
-        })
-        .onAppear() {
-            viewModel.getData()
+        .onReceive(timer) { _ in
+            Task {
+                await viewModel.getData()
+            }
+        }
+        .task {
+            await viewModel.getData()
         }
     }
 }

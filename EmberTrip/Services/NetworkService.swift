@@ -8,10 +8,7 @@
 import Foundation
 
 class NetworkService {
-    static let cacheFileName = "cache"
-    static var internetConnectionLost = false
-    
-    static func makeRequest<T: Codable>(request: RestEnum) async throws -> T {
+        static func makeRequest<T: Codable>(request: RestEnum) async throws -> T {
         let task = Task {
             // If url is nil throw error
             guard var urlComps = URLComponents(string: request.baseURL + request.path) else {
@@ -41,38 +38,12 @@ class NetworkService {
             try await Task.sleep(nanoseconds: 5000000000)
             task.cancel()
             print("Time Out")
-            internetConnectionLost = true
         }
         
         // Decode data
         let decoded = try await JSONDecoder().decode(T.self, from: task.value)
         timeoutTask.cancel()
-        internetConnectionLost = false
         return decoded
-    }
-    
-    static func saveDataToFile<T: Codable>(data: T) throws {
-        let filePath = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(self.cacheFileName, conformingTo: .json)
-        let encode = try JSONEncoder().encode(data)
-        try encode.write(to: filePath)
-    }
-    
-    static func loadDataFromFile<T: Codable>(fileURL: URL, type: T.Type) -> T? {
-        do {
-            // Read the contents of the JSON file
-            let data = try Data(contentsOf: fileURL)
-            
-            // Create a JSONDecoder instance
-            let decoder = JSONDecoder()
-            
-            // Decode the JSON data into the MyData struct
-            let decodedData = try decoder.decode(type, from: data)
-            
-            return decodedData
-        } catch {
-            print("Error decoding JSON: \(error)")
-        }
-        return nil
     }
 }
 
@@ -125,4 +96,3 @@ extension RestEnum {
         }
     }
 }
-

@@ -27,7 +27,7 @@ extension TripInfoResponses {
             return nil
         }
         
-        return NetworkService.loadDataFromFile(fileURL: fileURL, type: TripInfoResponses.self)
+        return FileManageService.loadDataFromFile(fileURL: fileURL, type: TripInfoResponses.self)
     }
 }
 #endif

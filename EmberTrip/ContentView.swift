@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State var quotes: [Quotes] = []
+    @State var showErrorMassage = false
+    @State var hadCache = false
     
     var body: some View {
         NavigationStack {
@@ -23,37 +25,40 @@ struct ContentView: View {
                                               showActualTime: true)
                     }
                 }
-            }
-            .overlay{
-                if quotes.isEmpty {
-                    ProgressView()
+                if hadCache {
+                    Section("") {
+                        NavigationLink {
+                            CombineMapListView(tripId: "")
+                        } label: {
+                            Text("Previous Session")
+                        }
+                    }
                 }
             }
             .navigationTitle("From: \(quotes.first?.legs?.first?.origin?.name ?? "")")
             .navigationBarTitleDisplayMode(.inline)
             .refreshable {
-                getData()
+                await getData()
             }
         }
-        .onAppear() {
-            getData()
+        .banner(showBanner: $showErrorMassage)
+        .task {
+            await getData()
         }
     }
     
-    private func getData() {
-        Task {
-            let form = Calendar.current.date(byAdding: .hour, value: -2, to: Date.now)
-            let to = Calendar.current.date(byAdding: .hour, value: 2, to: Date.now)
-            let requset = QuotesRequest(destination: 42, origin: 13, departureDateFrom: form, departureDateTo: to)
-            do {
-                let response = try await NetworkService.makeRequest(request: .getQuotes(quotesRequest: requset)) as QuotesResponse
-                quotes = response.quotes
-                print(response)
-            } catch {
-                print(error)
-                print(NetworkService.internetConnectionLost)
-            }
+    private func getData() async {
+        let form = Calendar.current.date(byAdding: .hour, value: -3, to: Date.now)
+        let to = Calendar.current.date(byAdding: .hour, value: 3, to: Date.now)
+        let requset = QuotesRequest(destination: 42, origin: 13, departureDateFrom: form, departureDateTo: to)
+        do {
+            let response = try await NetworkService.makeRequest(request: .getQuotes(quotesRequest: requset)) as QuotesResponse
+            quotes = response.quotes
+        } catch {
+            print(error)
+            showErrorMassage = true
         }
+        hadCache = (FileManageService.loadDataFormCache() != nil)
     }
 }
 

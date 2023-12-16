@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AAA5FCF12B2E136500C1DC47 /* BannerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FCF02B2E136500C1DC47 /* BannerModifier.swift */; };
+		AAA5FCF32B2E37CB00C1DC47 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FCF22B2E37CB00C1DC47 /* Cache.swift */; };
+		AAA5FCF52B2E381D00C1DC47 /* FileManageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FCF42B2E381D00C1DC47 /* FileManageService.swift */; };
 		AAD31D582B2A28EF00EE8410 /* EmberTripApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D572B2A28EF00EE8410 /* EmberTripApp.swift */; };
 		AAD31D5A2B2A28EF00EE8410 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D592B2A28EF00EE8410 /* ContentView.swift */; };
 		AAD31D5C2B2A28F000EE8410 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD31D5B2B2A28F000EE8410 /* Assets.xcassets */; };
@@ -29,6 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AAA5FCF02B2E136500C1DC47 /* BannerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModifier.swift; sourceTree = "<group>"; };
+		AAA5FCF22B2E37CB00C1DC47 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		AAA5FCF42B2E381D00C1DC47 /* FileManageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManageService.swift; sourceTree = "<group>"; };
 		AAD31D542B2A28EF00EE8410 /* EmberTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmberTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD31D572B2A28EF00EE8410 /* EmberTripApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmberTripApp.swift; sourceTree = "<group>"; };
 		AAD31D592B2A28EF00EE8410 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -109,6 +115,7 @@
 				AAD31D8A2B2B348400EE8410 /* Quotes */,
 				AAD31D892B2B347D00EE8410 /* TripInfo */,
 				AAD31DA12B2BA71F00EE8410 /* BusStop.swift */,
+				AAA5FCF22B2E37CB00C1DC47 /* Cache.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -118,6 +125,7 @@
 			children = (
 				AAD31D9E2B2B633C00EE8410 /* CombineMapList */,
 				AAD31D952B2B411700EE8410 /* BusStopInformationRow.swift */,
+				AAA5FCF02B2E136500C1DC47 /* BannerModifier.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,6 +135,7 @@
 			children = (
 				AAD31D8D2B2B350300EE8410 /* MyURLRequestProtocol.swift */,
 				AAD31D6F2B2A3D0B00EE8410 /* NetworkService.swift */,
+				AAA5FCF42B2E381D00C1DC47 /* FileManageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -244,6 +253,9 @@
 				AAD31D8C2B2B349C00EE8410 /* QuotesRequest.swift in Sources */,
 				AAD31D902B2B393600EE8410 /* QuotesResponse.swift in Sources */,
 				AAD31D742B2A5D4500EE8410 /* BusStopsListView.swift in Sources */,
+				AAA5FCF52B2E381D00C1DC47 /* FileManageService.swift in Sources */,
+				AAA5FCF32B2E37CB00C1DC47 /* Cache.swift in Sources */,
+				AAA5FCF12B2E136500C1DC47 /* BannerModifier.swift in Sources */,
 				AAD31DA02B2B635100EE8410 /* CombineMapListViewModel.swift in Sources */,
 				AAD31D702B2A3D0B00EE8410 /* NetworkService.swift in Sources */,
 				AAD31D9B2B2B4ABF00EE8410 /* BusMapView.swift in Sources */,

@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct BusMapView: View {
-    @EnvironmentObject var combineMapListViewModel: CombineMapListViewModel
+    @EnvironmentObject var combineMapListVM: CombineMapListViewModel
     
     @State private var busLocation: CLLocationCoordinate2D?
     
@@ -23,7 +23,7 @@ struct BusMapView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .top) {
-                Map(position: $combineMapListViewModel.cameraPosition, selection: $combineMapListViewModel.selectedStopId) {
+                Map(position: $combineMapListVM.cameraPosition, selection: $combineMapListVM.selectedStopId) {
                     ForEach(stops) { stop in
                         Marker(coordinate: stop.coordinate) {
                             Text(stop.name)
@@ -56,39 +56,47 @@ struct BusMapView: View {
                 }
                 
                 // Title bar
-                ZStack {
-                    HStack {
-                        Button {
-                            dissmiss()
-                        } label: {
-                            Image(systemName: "arrow.left")
-                                .font(.title3)
+                VStack(spacing: 0) {
+                    ZStack {
+                        HStack {
+                            Button {
+                                dissmiss()
+                            } label: {
+                                Image(systemName: "arrow.left")
+                                    .font(.title3)
+                            }
+                            Spacer()
                         }
+                        // Title
+                        Text("\(combineMapListVM.description?.routeNumber ?? "") \(Image(systemName: "chevron.forward.circle.fill")) \(stops.last?.name ?? "")")
+                    }
+                    .padding()
+                    .background()
+                    HStack {
+                        Spacer()
+                        Text("Last update: \(lastUpdateDate())")
                         Spacer()
                     }
-                    // Title
-                    Text("\(combineMapListViewModel.description?.routeNumber ?? "") \(Image(systemName: "chevron.forward.circle.fill")) \(stops.last?.name ?? "")")
+                    .foregroundStyle(.white)
+                    .background(combineMapListVM.internetConnection ? .green : .red)
                 }
-                .padding()
-                .frame(width: geo.size.width)
-                .background()
             }
         }
         .toolbar(.hidden, for: .navigationBar)
-        .onChange(of: combineMapListViewModel.vehicle?.gps) { oldValue, newValue in
+        .onChange(of: combineMapListVM.vehicle?.gps) { oldValue, newValue in
             withAnimation {
                 guard let newValue else {
                     return
                 }
                 busLocation = CLLocationCoordinate2D(latitude: newValue.latitude ?? 0, longitude: newValue.longitude ?? 0)
                 if busLocation != nil && cameraLockToBus {
-                    combineMapListViewModel.cameraPosition = .camera(MapCamera(centerCoordinate: busLocation!, distance: 800))
+                    combineMapListVM.cameraPosition = .camera(MapCamera(centerCoordinate: busLocation!, distance: 800))
                 }
             }
         }
         .onAppear() {
             withAnimation {
-                let vehicleLocation = combineMapListViewModel.vehicle?.gps
+                let vehicleLocation = combineMapListVM.vehicle?.gps
                 busLocation = CLLocationCoordinate2D(latitude: vehicleLocation?.latitude ?? 0, longitude: vehicleLocation?.longitude ?? 0)
             }
             loadBusStops()
@@ -114,8 +122,17 @@ struct BusMapView: View {
 //        }
     }
     
+    private func lastUpdateDate() -> String {
+        guard let updateDate = (combineMapListVM.vehicle?.gps?.lastUpdated ?? "").toDate() else {
+            return ""
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return dateFormatter.string(from: updateDate)
+    }
+    
     private func loadBusStops() {
-        guard let routes = combineMapListViewModel.routes else { return }
+        guard let routes = combineMapListVM.routes else { return }
         for route in routes {
             guard let lat = route.location.lat, let lon = route.location.lon else {
                 continue

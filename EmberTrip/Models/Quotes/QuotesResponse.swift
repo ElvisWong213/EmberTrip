@@ -35,7 +35,7 @@ extension QuotesResponse {
             return nil
         }
         
-        return NetworkService.loadDataFromFile(fileURL: fileURL, type: QuotesResponse.self)
+        return FileManageService.loadDataFromFile(fileURL: fileURL, type: QuotesResponse.self)
     }
 }
 #endif
