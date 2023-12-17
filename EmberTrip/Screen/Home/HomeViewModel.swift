@@ -38,6 +38,10 @@ class HomeViewModel: ObservableObject {
             print(error)
             showErrorMassage = true
         }
+        checkCacheData()
+    }
+    
+    func checkCacheData() {
         hadCacheData = (FileManageService.loadDataFormCache() != nil)
     }
     

@@ -19,7 +19,9 @@ class CombineMapListViewModel: ObservableObject {
     @Published var cameraPosition: MapCameraPosition = .automatic
     @Published var selectedStopId: Int? = nil
     @Published var internetConnection = true
+    
     @Published var showBanner = false
+    @Published var bannerMessageType: BannerMessage = .NetworkError
     
     let mock: Bool
 
@@ -56,6 +58,7 @@ class CombineMapListViewModel: ObservableObject {
         } catch {
             print(error)
             if internetConnection {
+                bannerMessageType = .NetworkError
                 showBanner = true
             }
             internetConnection = false

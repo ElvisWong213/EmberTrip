@@ -51,6 +51,11 @@ struct BusMapView: View {
             }
         }
         .toolbar(.hidden, for: .navigationBar)
+        .onChange(of: combineMapListVM.cameraPosition) { oldValue, newValue in
+            if newValue.positionedByUser {
+                viewModel.cameraLockToBus = false
+            }
+        }
         .onChange(of: combineMapListVM.vehicle?.gps) {
             viewModel.updateBusLocation(newLocation: combineMapListVM.vehicle?.gps)
             updateCameraPosition()

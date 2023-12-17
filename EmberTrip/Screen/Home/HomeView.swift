@@ -39,9 +39,12 @@ struct HomeView: View {
                 await viewModel.getData()
             }
         }
-        .banner(showBanner: $viewModel.showErrorMassage)
+        .banner(showBanner: $viewModel.showErrorMassage, messageType: .NetworkError)
         .task {
             await viewModel.getData()
+        }
+        .onAppear() {
+            viewModel.checkCacheData()
         }
     }
 }

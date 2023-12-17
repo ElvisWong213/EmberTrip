@@ -34,7 +34,7 @@ struct CombineMapListView: View {
                 ProgressView()
             }
         }
-        .banner(showBanner: $viewModel.showBanner)
+        .banner(showBanner: $viewModel.showBanner, messageType: viewModel.bannerMessageType)
         .environmentObject(viewModel)
         .onReceive(timer) { _ in
             Task {

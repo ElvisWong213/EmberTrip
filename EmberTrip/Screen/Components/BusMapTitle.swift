@@ -40,7 +40,14 @@ struct BusMapTitleBar: View {
             .background()
             HStack {
                 Spacer()
-                Text("Last update: \(lastUpdatedDate())")
+                Button {
+                    if !combineMapListVM.internetConnection {
+                        combineMapListVM.bannerMessageType = .MoreInfo
+                        combineMapListVM.showBanner = true
+                    }
+                } label: {
+                    Text("Last update: \(lastUpdatedDate())")
+                }
                 Spacer()
             }
             .foregroundStyle(.white)
@@ -51,7 +58,7 @@ struct BusMapTitleBar: View {
     
     private func updateCameraPosition() {
         withAnimation {
-            guard let newCameraPosition = busMapVM.newCameraPosition(), busMapVM.cameraLockToBus else {
+            guard let newCameraPosition = busMapVM.newCameraPosition() else {
                 return
             }
             combineMapListVM.cameraPosition = newCameraPosition
