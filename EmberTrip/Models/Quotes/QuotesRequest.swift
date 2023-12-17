@@ -39,6 +39,8 @@ struct QuotesRequest: Codable {
 }
 
 extension QuotesRequest: MyURLRequestProtocol {
+    /// Returns an array of URLQueryItem objects based on the properties of the current object.
+    /// - Returns: An array of URLQueryItem objects representing the properties of the current object.
     func getURLQueryItems() -> [URLQueryItem] {
         var queryItems: [URLQueryItem] = []
         

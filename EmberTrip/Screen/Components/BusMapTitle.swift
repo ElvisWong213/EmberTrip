@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import MapKit
 
 struct BusMapTitleBar: View {
     @EnvironmentObject var combineMapListVM: CombineMapListViewModel
@@ -19,6 +18,7 @@ struct BusMapTitleBar: View {
             ZStack {
                 // Buttons
                 HStack {
+                    // Back button
                     Button {
                         dissmiss()
                     } label: {
@@ -26,6 +26,7 @@ struct BusMapTitleBar: View {
                             .font(.title3)
                     }
                     Spacer()
+                    // Map camera follow bus location button
                     Button {
                         updateCameraPosition()
                         busMapVM.cameraLockToBus.toggle()
@@ -38,6 +39,8 @@ struct BusMapTitleBar: View {
             }
             .padding()
             .background()
+            
+            // Bus GPS last updated date
             HStack {
                 Spacer()
                 Button {
@@ -55,23 +58,27 @@ struct BusMapTitleBar: View {
         }
     }
     
-    
+    /// Updates the camera position of the map with animation based on the new camera position calculated by the `busMapVM`.
     private func updateCameraPosition() {
         withAnimation {
+            // Check if new camera position is available
             guard let newCameraPosition = busMapVM.newCameraPosition() else {
                 return
             }
+            // Set the camera position to the new value
             combineMapListVM.cameraPosition = newCameraPosition
         }
     }
-    
-    
+
+    /// Returns the last updated date of the vehicle's GPS data as a formatted string.
+    /// - Returns: A formatted string representing the last updated date, or an empty string if the date is not available.
     private func lastUpdatedDate() -> String {
         guard let updateDate = (combineMapListVM.vehicle?.gps?.lastUpdated ?? "").toDate() else {
             return ""
         }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        // Format the update date to a custom string format
         return dateFormatter.string(from: updateDate)
     }
 }

@@ -37,6 +37,7 @@ struct BusStopsListView: View {
                 }
                 .toolbar {
                     ToolbarItem {
+                        // Change the display time format
                         Button {
                             showActualTime.toggle()
                         } label: {
@@ -57,17 +58,25 @@ struct BusStopsListView: View {
         }
     }
     
+    /// Selects a stop based on the provided latitude, longitude, and stop ID.
+    /// - Parameters:
+    ///    - lat: The latitude of the stop.
+    ///    - lon: The longitude of the stop.
+    ///    - id: The unique identifier of the stop.
     private func selectStop(lat: Double?, lon: Double?, id: Int) {
         guard let lat, let lon else {
             return
         }
         let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
         withAnimation {
-            combineMapListVM.cameraPosition = .item(MKMapItem(placemark: .init(coordinate: coordinate)))
+            // Sets the camera position to the selected stop's location on the map and updates the selected stop ID.
+            combineMapListVM.cameraPosition = .item(MKMapItem(placemark: MKPlacemark(coordinate: coordinate)))
             combineMapListVM.selectedStopId = id
         }
     }
-    
+
+    /// Retrieves the ID of the next stop.
+    /// - Returns: The unique identifier of the next stop if available; otherwise, returns nil.
     private func getNextStopId() -> Int? {
         guard let stops = combineMapListVM.routes else {
             return nil
@@ -80,19 +89,27 @@ struct BusStopsListView: View {
         }
         return nil
     }
-    
+
+    /// Sets up the initially selected stop and scrolls to it.
+    /// - Parameters:
+    ///    - proxy: The scrollView proxy used for scrolling.
     private func setupInitialSelectedStop(_ proxy: ScrollViewProxy) {
         guard let nextStopId = getNextStopId() else {
             return
         }
         withAnimation {
+            // Updates the selected stop ID to the next stop and scrolls to it using the provided scrollView proxy.
             combineMapListVM.selectedStopId = nextStopId
             proxy.scrollTo(nextStopId)
         }
     }
 
+    /// Scrolls to the selected stop using the provided scrollView proxy.
+    /// - Parameters:
+    ///    - proxy: The scrollView proxy used for scrolling.
     private func scrollToSelectedStop(_ proxy: ScrollViewProxy) {
         withAnimation {
+            // Scrolls to the selected stop using the provided scrollView proxy.
             proxy.scrollTo(combineMapListVM.selectedStopId)
         }
     }

@@ -23,6 +23,7 @@ struct HomeView: View {
                                               showActualTime: true)
                     }
                 }
+                // Prevoius session
                 if viewModel.hadCacheData {
                     Section("") {
                         NavigationLink {
@@ -39,7 +40,7 @@ struct HomeView: View {
                 await viewModel.getData()
             }
         }
-        .banner(showBanner: $viewModel.showErrorMassage, messageType: .NetworkError)
+        .banner(showBanner: $viewModel.showErrorMessage, messageType: .NetworkError)
         .task {
             await viewModel.getData()
         }

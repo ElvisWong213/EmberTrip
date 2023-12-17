@@ -22,7 +22,9 @@ struct CombineMapListView: View {
     var body: some View {
         VStack {
             if viewModel.routes != nil && viewModel.vehicle != nil {
+                // Map View
                 BusMapView()
+                // Using sheet to show all the bus stops in a list
                     .sheet(isPresented: .constant(true), content: {
                         BusStopsListView()
                             .presentationDetents([.fraction(0.8), .fraction(0.4), .fraction(0.1)])
@@ -31,11 +33,13 @@ struct CombineMapListView: View {
                         
                     })
             } else {
+                // Loading Screen
                 ProgressView()
             }
         }
         .banner(showBanner: $viewModel.showBanner, messageType: viewModel.bannerMessageType)
         .environmentObject(viewModel)
+        // Send a request every 10 seconds to make sure the bus location is updated
         .onReceive(timer) { _ in
             Task {
                 await viewModel.getData()

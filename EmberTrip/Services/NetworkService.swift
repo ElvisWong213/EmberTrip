@@ -7,39 +7,46 @@
 
 import Foundation
 
+/// A service for making asynchronous network requests and decoding the response.
 class NetworkService {
-        static func makeRequest<T: Codable>(request: RestEnum) async throws -> T {
+
+    /// Makes an async network request and returns the decoded response data.
+    /// - Parameters:
+    ///     - request: An enum value representing the REST API endpoint and its configuration.
+    /// - Throws: `NetworkError` if an error occurs during the transmission or processing of the request.
+    /// - Returns: The decoded response data of type `T`.
+    static func makeRequest<T: Codable>(request: RestEnum) async throws -> T {
         let task = Task {
-            // If url is nil throw error
+            // If the URL is nil, throw an invalid URL error
             guard var urlComps = URLComponents(string: request.baseURL + request.path) else {
                 throw NetworkError.InvalidURL
             }
             
+            // Add query items
             urlComps.queryItems = request.queryItems
-        
-            // Setup requset with url
+            
+            // Setup request with URL
             var urlRequest = URLRequest(url: urlComps.url!)
             
             // Define request method
             urlRequest.httpMethod = request.method
-        
-            // Send requset
+            
+            // Send request
             let (data, response) = try await URLSession.shared.data(for: urlRequest)
-            // If respone is invalid throw error
-            guard let response = response as? HTTPURLResponse, response.statusCode >= 200 && response.statusCode < 300 else {
-                print(response)
+            
+            // If the response is invalid, throw an invalid response error
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode >= 200 && httpResponse.statusCode < 300 else {
                 throw NetworkError.InvalidResponse
             }
             return data
         }
-        
-        // Timeout after 5 second
+
+        // Timeout after 5 seconds
         let timeoutTask = Task {
             try await Task.sleep(nanoseconds: 5000000000)
             task.cancel()
-            print("Time Out")
         }
-        
+
         // Decode data
         let decoded = try await JSONDecoder().decode(T.self, from: task.value)
         timeoutTask.cancel()
@@ -49,7 +56,7 @@ class NetworkService {
 
 
 enum NetworkError: LocalizedError {
-    case InvalidResponse, InvalidURL, InvalidToken, InvalidData
+    case InvalidResponse, InvalidURL, InvalidData
 }
 
 enum RestEnum {
@@ -87,6 +94,7 @@ extension RestEnum {
         }
     }
     
+    // Request query items
     var queryItems: [URLQueryItem] {
         switch self {
         case .getTripInfo(let tripInfoRequest):

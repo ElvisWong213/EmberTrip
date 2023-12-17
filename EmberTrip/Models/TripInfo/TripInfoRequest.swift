@@ -42,6 +42,8 @@ struct TripInfoRequest: Codable {
 }
 
 extension TripInfoRequest: MyURLRequestProtocol {
+    /// Returns an array of URLQueryItem objects based on the properties of the current object.
+    /// - Returns: An array of URLQueryItem objects representing the properties of the current object.
     func getURLQueryItems() -> [URLQueryItem] {
         var queryItems: [URLQueryItem] = []
         let mirror = Mirror(reflecting: self)
