@@ -15,6 +15,9 @@
 		AAA5FD002B2E629800C1DC47 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FCFF2B2E629800C1DC47 /* HomeViewModel.swift */; };
 		AAA5FD082B2E90D600C1DC47 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FD072B2E90D600C1DC47 /* NetworkServiceTests.swift */; };
 		AAA5FD0F2B2E96AD00C1DC47 /* MyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FD0E2B2E96AD00C1DC47 /* MyLocation.swift */; };
+		AAA5FD112B2F38AE00C1DC47 /* FileManageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FD102B2F38AE00C1DC47 /* FileManageServiceTests.swift */; };
+		AAA5FD132B2F4E1000C1DC47 /* TripViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FD122B2F4E1000C1DC47 /* TripViewModelTests.swift */; };
+		AAA5FD152B2F4FE000C1DC47 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FD142B2F4FE000C1DC47 /* HomeViewModelTests.swift */; };
 		AAD31D582B2A28EF00EE8410 /* EmberTripApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D572B2A28EF00EE8410 /* EmberTripApp.swift */; };
 		AAD31D5A2B2A28EF00EE8410 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D592B2A28EF00EE8410 /* HomeView.swift */; };
 		AAD31D5C2B2A28F000EE8410 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD31D5B2B2A28F000EE8410 /* Assets.xcassets */; };
@@ -56,6 +59,9 @@
 		AAA5FD052B2E90D600C1DC47 /* EmberTripTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmberTripTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAA5FD072B2E90D600C1DC47 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		AAA5FD0E2B2E96AD00C1DC47 /* MyLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocation.swift; sourceTree = "<group>"; };
+		AAA5FD102B2F38AE00C1DC47 /* FileManageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManageServiceTests.swift; sourceTree = "<group>"; };
+		AAA5FD122B2F4E1000C1DC47 /* TripViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewModelTests.swift; sourceTree = "<group>"; };
+		AAA5FD142B2F4FE000C1DC47 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		AAD31D542B2A28EF00EE8410 /* EmberTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmberTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD31D572B2A28EF00EE8410 /* EmberTripApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmberTripApp.swift; sourceTree = "<group>"; };
 		AAD31D592B2A28EF00EE8410 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -138,6 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				AAA5FD072B2E90D600C1DC47 /* NetworkServiceTests.swift */,
+				AAA5FD102B2F38AE00C1DC47 /* FileManageServiceTests.swift */,
+				AAA5FD122B2F4E1000C1DC47 /* TripViewModelTests.swift */,
+				AAA5FD142B2F4FE000C1DC47 /* HomeViewModelTests.swift */,
 			);
 			path = EmberTripTests;
 			sourceTree = "<group>";
@@ -353,7 +362,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAA5FD132B2F4E1000C1DC47 /* TripViewModelTests.swift in Sources */,
+				AAA5FD112B2F38AE00C1DC47 /* FileManageServiceTests.swift in Sources */,
 				AAA5FD082B2E90D600C1DC47 /* NetworkServiceTests.swift in Sources */,
+				AAA5FD152B2F4FE000C1DC47 /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

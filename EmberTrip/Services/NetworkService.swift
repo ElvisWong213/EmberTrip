@@ -18,7 +18,7 @@ class NetworkService {
     static func makeRequest<T: Codable>(request: RestEnum) async throws -> T {
         let task = Task {
             // If the URL is nil, throw an invalid URL error
-            guard var urlComps = URLComponents(string: request.baseURL + request.path) else {
+            guard var urlComps = URLComponents(string: request.url) else {
                 throw NetworkError.InvalidURL
             }
             
@@ -68,6 +68,7 @@ enum RestEnum {
     
     // MARK: Invalid request for unit test
     case invalidRequest
+    case emptyRequest
     
     // MARK: Valid request for unit test
     case locations
@@ -78,29 +79,31 @@ extension RestEnum {
     // Requset method
     var method: String {
         switch self {
-        case .getTripInfo, .getQuotes, .invalidRequest, .locations:
+        case .getTripInfo, .getQuotes, .locations, .invalidRequest, .emptyRequest:
             return "GET"
         }
     }
     
     // API base url
-    var baseURL: String {
+    private var baseURL: String {
         get {
             return "https://api.ember.to/v1/"
         }
     }
     
-    // API path
-    var path: String {
+    // API url
+    var url: String {
         switch self {
         case .getTripInfo(let tripInfoRequest):
-            return "trips/\(tripInfoRequest.id)/"
+            return baseURL + "trips/\(tripInfoRequest.id)/"
         case .getQuotes:
-            return "quotes/"
+            return baseURL + "quotes/"
         case .invalidRequest:
-            return "invalidRequest"
+            return "https://www.example.com:8800/"
+        case .emptyRequest:
+            return ""
         case .locations:
-            return "locations/"
+            return baseURL + "locations/"
         }
     }
     
@@ -112,6 +115,8 @@ extension RestEnum {
         case .getQuotes(let quotesRequest):
             return quotesRequest.getURLQueryItems()
         case .invalidRequest:
+            return []
+        case .emptyRequest:
             return []
         case .locations:
             return []

@@ -25,12 +25,14 @@ class HomeViewModel: ObservableObject {
     init() {
     }
     
+    #if DEBUG
     /// Initializes the HomeViewModel with mock data based on the provided flag.
     /// - Parameter mock: A boolean value representing whether to use mock data.
     init(mock: Bool) {
         self.mock = mock
         self.quotes = QuotesResponse.loadMockData()?.quotes ?? []
     }
+    #endif
     
     /// Fetches data from the API or mock data asynchronously.
     func getData() async {

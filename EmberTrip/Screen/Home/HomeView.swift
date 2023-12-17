@@ -15,11 +15,11 @@ struct HomeView: View {
             List {
                 ForEach(viewModel.quotes) { quote in
                     NavigationLink {
-                        TripView(tripId: quote.legs?[0].tripUid ?? "")
+                        TripView(tripId: quote.legs?.first?.tripUid ?? "")
                     } label: {
-                        BusStopInformationRow(scheduled: quote.legs?[0].departure?.scheduled, 
-                                              estimated: quote.legs?[0].departure?.estimated,
-                                              location: quote.legs?[0].destination?.name,
+                        BusStopInformationRow(scheduled: quote.legs?.first?.departure?.scheduled,
+                                              estimated: quote.legs?.first?.departure?.estimated,
+                                              location: quote.legs?.first?.destination?.name,
                                               showActualTime: true)
                     }
                 }

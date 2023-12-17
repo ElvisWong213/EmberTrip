@@ -54,7 +54,7 @@ class TripViewModel: ObservableObject {
             self.loadCache()
         }
     }
-
+    #if DEBUG
     /// Initializes the view model with mock data.
     /// - Parameter mock: A boolean indicating whether to use mock data.
     init(mock: Bool) {
@@ -64,6 +64,7 @@ class TripViewModel: ObservableObject {
         self.description = TripInfoResponses.loadMockData()?.description
         self.mock = mock
     }
+    #endif
 
     /// Fetches the trip data from the backend asynchronously.
     func getData() async {

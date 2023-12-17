@@ -32,9 +32,8 @@ class FileManageService {
     /// Returns the file URL for the cache file in the document directory.
     /// - Returns: A file URL for the cache file in the document directory.
     /// - Throws: An error if the file URL cannot be created.
-    private static func cacheFilePath() throws -> URL {
-        return try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            .appendingPathComponent("cache", conformingTo: .json)
+    static func cacheFilePath() throws -> URL {
+        return try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("cache", conformingTo: .json)
     }
     
     /// Save data to the file cache.
