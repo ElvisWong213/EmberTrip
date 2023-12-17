@@ -13,6 +13,8 @@
 		AAA5FCFA2B2E5A9E00C1DC47 /* BusMapTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FCF92B2E5A9E00C1DC47 /* BusMapTitle.swift */; };
 		AAA5FCFC2B2E5B1500C1DC47 /* BusMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FCFB2B2E5B1500C1DC47 /* BusMapViewModel.swift */; };
 		AAA5FD002B2E629800C1DC47 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FCFF2B2E629800C1DC47 /* HomeViewModel.swift */; };
+		AAA5FD082B2E90D600C1DC47 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FD072B2E90D600C1DC47 /* NetworkServiceTests.swift */; };
+		AAA5FD0F2B2E96AD00C1DC47 /* MyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FD0E2B2E96AD00C1DC47 /* MyLocation.swift */; };
 		AAD31D582B2A28EF00EE8410 /* EmberTripApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D572B2A28EF00EE8410 /* EmberTripApp.swift */; };
 		AAD31D5A2B2A28EF00EE8410 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D592B2A28EF00EE8410 /* HomeView.swift */; };
 		AAD31D5C2B2A28F000EE8410 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD31D5B2B2A28F000EE8410 /* Assets.xcassets */; };
@@ -29,10 +31,20 @@
 		AAD31D962B2B411700EE8410 /* BusStopInformationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D952B2B411700EE8410 /* BusStopInformationRow.swift */; };
 		AAD31D992B2B445000EE8410 /* String++.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D982B2B445000EE8410 /* String++.swift */; };
 		AAD31D9B2B2B4ABF00EE8410 /* BusMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D9A2B2B4ABF00EE8410 /* BusMapView.swift */; };
-		AAD31D9D2B2B52B000EE8410 /* CombineMapListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D9C2B2B52B000EE8410 /* CombineMapListView.swift */; };
-		AAD31DA02B2B635100EE8410 /* CombineMapListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D9F2B2B635100EE8410 /* CombineMapListViewModel.swift */; };
+		AAD31D9D2B2B52B000EE8410 /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D9C2B2B52B000EE8410 /* TripView.swift */; };
+		AAD31DA02B2B635100EE8410 /* TripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D9F2B2B635100EE8410 /* TripViewModel.swift */; };
 		AAD31DA22B2BA71F00EE8410 /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31DA12B2BA71F00EE8410 /* BusStop.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AAA5FD092B2E90D600C1DC47 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AAD31D4C2B2A28EF00EE8410 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AAD31D532B2A28EF00EE8410;
+			remoteInfo = EmberTrip;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		AAA5FCF02B2E136500C1DC47 /* BannerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModifier.swift; sourceTree = "<group>"; };
@@ -41,6 +53,9 @@
 		AAA5FCF92B2E5A9E00C1DC47 /* BusMapTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusMapTitle.swift; sourceTree = "<group>"; };
 		AAA5FCFB2B2E5B1500C1DC47 /* BusMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusMapViewModel.swift; sourceTree = "<group>"; };
 		AAA5FCFF2B2E629800C1DC47 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		AAA5FD052B2E90D600C1DC47 /* EmberTripTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmberTripTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAA5FD072B2E90D600C1DC47 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		AAA5FD0E2B2E96AD00C1DC47 /* MyLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocation.swift; sourceTree = "<group>"; };
 		AAD31D542B2A28EF00EE8410 /* EmberTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmberTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD31D572B2A28EF00EE8410 /* EmberTripApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmberTripApp.swift; sourceTree = "<group>"; };
 		AAD31D592B2A28EF00EE8410 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -58,12 +73,19 @@
 		AAD31D952B2B411700EE8410 /* BusStopInformationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopInformationRow.swift; sourceTree = "<group>"; };
 		AAD31D982B2B445000EE8410 /* String++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String++.swift"; sourceTree = "<group>"; };
 		AAD31D9A2B2B4ABF00EE8410 /* BusMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusMapView.swift; sourceTree = "<group>"; };
-		AAD31D9C2B2B52B000EE8410 /* CombineMapListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineMapListView.swift; sourceTree = "<group>"; };
-		AAD31D9F2B2B635100EE8410 /* CombineMapListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineMapListViewModel.swift; sourceTree = "<group>"; };
+		AAD31D9C2B2B52B000EE8410 /* TripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
+		AAD31D9F2B2B635100EE8410 /* TripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewModel.swift; sourceTree = "<group>"; };
 		AAD31DA12B2BA71F00EE8410 /* BusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AAA5FD022B2E90D600C1DC47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AAD31D512B2A28EF00EE8410 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -77,7 +99,7 @@
 		AAA5FCF72B2E59FC00C1DC47 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AAD31D9C2B2B52B000EE8410 /* CombineMapListView.swift */,
+				AAD31D9C2B2B52B000EE8410 /* TripView.swift */,
 				AAD31D732B2A5D4500EE8410 /* BusStopsListView.swift */,
 				AAD31D9A2B2B4ABF00EE8410 /* BusMapView.swift */,
 			);
@@ -97,7 +119,7 @@
 		AAA5FCFD2B2E61F700C1DC47 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				AAD31D9F2B2B635100EE8410 /* CombineMapListViewModel.swift */,
+				AAD31D9F2B2B635100EE8410 /* TripViewModel.swift */,
 				AAA5FCFB2B2E5B1500C1DC47 /* BusMapViewModel.swift */,
 			);
 			path = ViewModels;
@@ -112,10 +134,19 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		AAA5FD062B2E90D600C1DC47 /* EmberTripTests */ = {
+			isa = PBXGroup;
+			children = (
+				AAA5FD072B2E90D600C1DC47 /* NetworkServiceTests.swift */,
+			);
+			path = EmberTripTests;
+			sourceTree = "<group>";
+		};
 		AAD31D4B2B2A28EF00EE8410 = {
 			isa = PBXGroup;
 			children = (
 				AAD31D562B2A28EF00EE8410 /* EmberTrip */,
+				AAA5FD062B2E90D600C1DC47 /* EmberTripTests */,
 				AAD31D552B2A28EF00EE8410 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -124,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				AAD31D542B2A28EF00EE8410 /* EmberTrip.app */,
+				AAA5FD052B2E90D600C1DC47 /* EmberTripTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,6 +191,7 @@
 				AAD31D892B2B347D00EE8410 /* TripInfo */,
 				AAD31DA12B2BA71F00EE8410 /* BusStop.swift */,
 				AAA5FCF22B2E37CB00C1DC47 /* Cache.swift */,
+				AAA5FD0E2B2E96AD00C1DC47 /* MyLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -168,7 +201,7 @@
 			children = (
 				AAA5FCF82B2E5A7100C1DC47 /* Components */,
 				AAA5FCFE2B2E625600C1DC47 /* Home */,
-				AAD31D9E2B2B633C00EE8410 /* CombineMapList */,
+				AAD31D9E2B2B633C00EE8410 /* Trip */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -209,18 +242,36 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		AAD31D9E2B2B633C00EE8410 /* CombineMapList */ = {
+		AAD31D9E2B2B633C00EE8410 /* Trip */ = {
 			isa = PBXGroup;
 			children = (
 				AAA5FCFD2B2E61F700C1DC47 /* ViewModels */,
 				AAA5FCF72B2E59FC00C1DC47 /* Views */,
 			);
-			path = CombineMapList;
+			path = Trip;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AAA5FD042B2E90D600C1DC47 /* EmberTripTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAA5FD0B2B2E90D700C1DC47 /* Build configuration list for PBXNativeTarget "EmberTripTests" */;
+			buildPhases = (
+				AAA5FD012B2E90D600C1DC47 /* Sources */,
+				AAA5FD022B2E90D600C1DC47 /* Frameworks */,
+				AAA5FD032B2E90D600C1DC47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AAA5FD0A2B2E90D600C1DC47 /* PBXTargetDependency */,
+			);
+			name = EmberTripTests;
+			productName = EmberTripTests;
+			productReference = AAA5FD052B2E90D600C1DC47 /* EmberTripTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		AAD31D532B2A28EF00EE8410 /* EmberTrip */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAD31D622B2A28F000EE8410 /* Build configuration list for PBXNativeTarget "EmberTrip" */;
@@ -248,6 +299,10 @@
 				LastSwiftUpdateCheck = 1510;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
+					AAA5FD042B2E90D600C1DC47 = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = AAD31D532B2A28EF00EE8410;
+					};
 					AAD31D532B2A28EF00EE8410 = {
 						CreatedOnToolsVersion = 15.1;
 					};
@@ -267,11 +322,19 @@
 			projectRoot = "";
 			targets = (
 				AAD31D532B2A28EF00EE8410 /* EmberTrip */,
+				AAA5FD042B2E90D600C1DC47 /* EmberTripTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AAA5FD032B2E90D600C1DC47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AAD31D522B2A28EF00EE8410 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -286,6 +349,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AAA5FD012B2E90D600C1DC47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAA5FD082B2E90D600C1DC47 /* NetworkServiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AAD31D502B2A28EF00EE8410 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -299,7 +370,7 @@
 				AAA5FCF52B2E381D00C1DC47 /* FileManageService.swift in Sources */,
 				AAA5FCF32B2E37CB00C1DC47 /* Cache.swift in Sources */,
 				AAA5FCF12B2E136500C1DC47 /* BannerModifier.swift in Sources */,
-				AAD31DA02B2B635100EE8410 /* CombineMapListViewModel.swift in Sources */,
+				AAD31DA02B2B635100EE8410 /* TripViewModel.swift in Sources */,
 				AAD31D702B2A3D0B00EE8410 /* NetworkService.swift in Sources */,
 				AAD31D9B2B2B4ABF00EE8410 /* BusMapView.swift in Sources */,
 				AAD31D882B2B244600EE8410 /* TripInfoResponses.swift in Sources */,
@@ -308,15 +379,60 @@
 				AAD31D5A2B2A28EF00EE8410 /* HomeView.swift in Sources */,
 				AAA5FD002B2E629800C1DC47 /* HomeViewModel.swift in Sources */,
 				AAD31D962B2B411700EE8410 /* BusStopInformationRow.swift in Sources */,
-				AAD31D9D2B2B52B000EE8410 /* CombineMapListView.swift in Sources */,
+				AAD31D9D2B2B52B000EE8410 /* TripView.swift in Sources */,
 				AAD31D582B2A28EF00EE8410 /* EmberTripApp.swift in Sources */,
+				AAA5FD0F2B2E96AD00C1DC47 /* MyLocation.swift in Sources */,
 				AAD31D8E2B2B350300EE8410 /* MyURLRequestProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		AAA5FD0A2B2E90D600C1DC47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AAD31D532B2A28EF00EE8410 /* EmberTrip */;
+			targetProxy = AAA5FD092B2E90D600C1DC47 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		AAA5FD0C2B2E90D700C1DC47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 447H88N27M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = elvis.EmberTripTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmberTrip.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EmberTrip";
+			};
+			name = Debug;
+		};
+		AAA5FD0D2B2E90D700C1DC47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 447H88N27M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = elvis.EmberTripTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmberTrip.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EmberTrip";
+			};
+			name = Release;
+		};
 		AAD31D602B2A28F000EE8410 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -497,6 +613,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AAA5FD0B2B2E90D700C1DC47 /* Build configuration list for PBXNativeTarget "EmberTripTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAA5FD0C2B2E90D700C1DC47 /* Debug */,
+				AAA5FD0D2B2E90D700C1DC47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AAD31D4F2B2A28EF00EE8410 /* Build configuration list for PBXProject "EmberTrip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

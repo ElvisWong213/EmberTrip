@@ -1,5 +1,5 @@
 //
-//  CombineMapListViewModel.swift
+//  TripViewModel.swift
 //  EmberTrip
 //
 //  Created by Elvis on 14/12/2023.
@@ -9,11 +9,11 @@ import Foundation
 import MapKit
 import SwiftUI
 
-/// A view model that provides data for the CombineMapListView.
+/// A view model that provides data for the TripView.
 /// You should use this view model to retrieve and manage data related to a specific trip and display it in the UI.
-/// - Note: This class is designed to work with SwiftUI's ObservableObject protocol and should be accessed through CombineMapListView.
+/// - Note: This class is designed to work with SwiftUI's ObservableObject protocol and should be accessed through TripView.
 @MainActor
-class CombineMapListViewModel: ObservableObject {
+class TripViewModel: ObservableObject {
     /// The identifier of the trip to fetch data for.
     var tripId: String
 

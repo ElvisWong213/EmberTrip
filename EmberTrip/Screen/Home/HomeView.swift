@@ -15,7 +15,7 @@ struct HomeView: View {
             List {
                 ForEach(viewModel.quotes) { quote in
                     NavigationLink {
-                        CombineMapListView(tripId: quote.legs?[0].tripUid ?? "")
+                        TripView(tripId: quote.legs?[0].tripUid ?? "")
                     } label: {
                         BusStopInformationRow(scheduled: quote.legs?[0].departure?.scheduled, 
                                               estimated: quote.legs?[0].departure?.estimated,
@@ -27,7 +27,7 @@ struct HomeView: View {
                 if viewModel.hadCacheData {
                     Section("") {
                         NavigationLink {
-                            CombineMapListView(tripId: "")
+                            TripView(tripId: "")
                         } label: {
                             Text("Previous Session")
                         }

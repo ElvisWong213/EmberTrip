@@ -65,6 +65,12 @@ enum RestEnum {
     
     // Quotes
     case getQuotes(quotesRequest: QuotesRequest)
+    
+    // MARK: Invalid request for unit test
+    case invalidRequest
+    
+    // MARK: Valid request for unit test
+    case locations
 }
 
 extension RestEnum {
@@ -72,7 +78,7 @@ extension RestEnum {
     // Requset method
     var method: String {
         switch self {
-        case .getTripInfo, .getQuotes:
+        case .getTripInfo, .getQuotes, .invalidRequest, .locations:
             return "GET"
         }
     }
@@ -91,6 +97,10 @@ extension RestEnum {
             return "trips/\(tripInfoRequest.id)/"
         case .getQuotes:
             return "quotes/"
+        case .invalidRequest:
+            return "invalidRequest"
+        case .locations:
+            return "locations/"
         }
     }
     
@@ -101,6 +111,10 @@ extension RestEnum {
             return tripInfoRequest.getURLQueryItems()
         case .getQuotes(let quotesRequest):
             return quotesRequest.getURLQueryItems()
+        case .invalidRequest:
+            return []
+        case .locations:
+            return []
         }
     }
 }

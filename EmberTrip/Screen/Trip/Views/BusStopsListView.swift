@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct BusStopsListView: View {
-    @EnvironmentObject var combineMapListVM: CombineMapListViewModel
+    @EnvironmentObject var combineMapListVM: TripViewModel
     @State private var showActualTime = false
     
     var body: some View {
@@ -117,5 +117,5 @@ struct BusStopsListView: View {
 
 #Preview {
     BusStopsListView()
-        .environmentObject(CombineMapListViewModel(mock: true))
+        .environmentObject(TripViewModel(mock: true))
 }

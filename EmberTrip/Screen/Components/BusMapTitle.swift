@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BusMapTitleBar: View {
-    @EnvironmentObject var combineMapListVM: CombineMapListViewModel
+    @EnvironmentObject var combineMapListVM: TripViewModel
     @EnvironmentObject var busMapVM: BusMapViewModel
     @Environment(\.dismiss) var dissmiss
     
@@ -85,6 +85,6 @@ struct BusMapTitleBar: View {
 
 #Preview {
     BusMapTitleBar()
-        .environmentObject(CombineMapListViewModel(mock: true))
+        .environmentObject(TripViewModel(mock: true))
         .environmentObject(BusMapViewModel())
 }

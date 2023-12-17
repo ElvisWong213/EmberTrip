@@ -1,5 +1,5 @@
 //
-//  CombineMapListView.swift
+//  TripView.swift
 //  EmberTrip
 //
 //  Created by Elvis on 14/12/2023.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct CombineMapListView: View {
-    @StateObject var viewModel: CombineMapListViewModel
+struct TripView: View {
+    @StateObject var viewModel: TripViewModel
     private let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
     
     init(tripId: String) {
         if tripId == "MOCK" {
-            self._viewModel = StateObject(wrappedValue: CombineMapListViewModel(mock: true))
+            self._viewModel = StateObject(wrappedValue: TripViewModel(mock: true))
         } else {
-            self._viewModel = StateObject(wrappedValue: CombineMapListViewModel(tripId: tripId))
+            self._viewModel = StateObject(wrappedValue: TripViewModel(tripId: tripId))
         }
     }
 
@@ -52,5 +52,5 @@ struct CombineMapListView: View {
 }
 
 #Preview {
-    CombineMapListView(tripId: "MOCK")
+    TripView(tripId: "MOCK")
 }
