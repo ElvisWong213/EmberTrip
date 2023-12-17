@@ -52,7 +52,7 @@ struct BusMapView: View {
         }
         .toolbar(.hidden, for: .navigationBar)
         .onChange(of: combineMapListVM.cameraPosition) { oldValue, newValue in
-            if newValue.positionedByUser {
+            if newValue.camera == nil {
                 viewModel.cameraLockToBus = false
             }
         }
