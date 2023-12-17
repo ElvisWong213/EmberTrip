@@ -19,6 +19,7 @@ struct BannerModifier: ViewModifier {
                 if showBanner {
                     VStack {
                         HStack {
+                            // Banner messages
                             VStack(alignment: .leading) {
                                 Text(messageType.title)
                                     .bold()
@@ -28,11 +29,13 @@ struct BannerModifier: ViewModifier {
                             .foregroundStyle(.white)
                             Spacer()
                         }
+                        // Banner background
                         .padding()
                         .background(.red)
                         .cornerRadius(15)
                         Spacer()
                     }
+                    // Banner Border
                     .padding()
                     .transition(AnyTransition.move(edge: .top))
                     .onAppear() {
