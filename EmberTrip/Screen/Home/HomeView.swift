@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel = HomeViewModel()
+    private let notification = NotificationService()
     
     var body: some View {
         NavigationStack {
@@ -20,7 +21,8 @@ struct HomeView: View {
                         BusStopInformationRow(scheduled: quote.legs?.first?.departure?.scheduled,
                                               estimated: quote.legs?.first?.departure?.estimated,
                                               location: quote.legs?.first?.destination?.name,
-                                              showActualTime: true)
+                                              showActualTime: true,
+                                              hadAlert: false)
                     }
                 }
                 // Prevoius session
