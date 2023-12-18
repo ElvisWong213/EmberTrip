@@ -21,6 +21,7 @@ The goal of this project is to create a mobile view that provides useful informa
 <p>
   <img src="https://github.com/ElvisWong213/EmberTrip/assets/40566101/c151439b-5898-4786-a2f8-98ab62c61a43" width="200"/>
   <img src="https://github.com/ElvisWong213/EmberTrip/assets/40566101/263bbbbe-3f14-4a50-9b4e-e7cdaafd92dc" width="200"/>
+  <img src="https://github.com/ElvisWong213/EmberTrip/assets/40566101/0e939c75-4b67-4036-9c89-ebc726672c22" width="200"/>
 </p>
 
 ## Features
