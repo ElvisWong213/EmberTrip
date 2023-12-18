@@ -63,7 +63,7 @@ extension BannerMessage {
         case .SetAlert:
             return .green
         case .RemoveAlert:
-            return .orange
+            return .yellow
             
         }
     }

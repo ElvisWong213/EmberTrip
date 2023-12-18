@@ -27,6 +27,7 @@ struct BusStopsListView: View {
                         .onTapGesture {
                             selectStop(lat: stop.location.lat, lon: stop.location.lon, id: stop.id)
                         }
+                        // Notification
                         .swipeActions(edge: .leading) {
                             Button {
                                 if hadAlert(busStopId: stop.id) {
@@ -154,43 +155,77 @@ extension BusStopsListView {
     }
     
     // MARK: - Notification
-    
+    /// Creates an arrival notification for the specified bus stop.
+    /// - Parameters:
+    ///    - stop: The bus stop for which the arrival notification is created.
+    /// - Returns: A boolean value indicating whether the arrival notification was successfully created.
     private func createArrivalNotification(stop: Route) -> Bool {
+        // First, remove any existing arrival notifications
         removeArrivalNotification()
+
+        // Create a new arrival notification using the provided bus stop and trip ID
         let newArrivalNotification: ArrivalNotification = ArrivalNotification(id: UUID(), tripId: tripVM.tripId, busStopId: stop.id)
+
+        // Get the current calendar
         let calendar = Calendar.current
-        guard let arrivalDate = stop.arrival.scheduled.toDate(), let triggerDate = calendar.date(byAdding: .minute, value: -5, to: arrivalDate) else {
-            return false
+
+        // Convert the scheduled arrival time of the bus stop to a Date object
+        guard let arrivalDate = stop.arrival.scheduled.toDate(),
+            // Calculate a trigger date 5 minutes before the scheduled arrival time
+            let triggerDate = calendar.date(byAdding: .minute, value: -5, to: arrivalDate) else {
+                return false
         }
+
+        // Extract date components for creating the notification trigger
         let comps = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: triggerDate)
+
+        // Create the notification with the arrival notification details
         guard notificationService.createNotification(title: "Arrival Notification", subtitle: "Arriving soon (\(stop.location.name))", id: newArrivalNotification.id, date: comps) else {
             return false
         }
+
+        // Save the arrival notification data and the arrival notification object
         arrivalNotificationData = toData(notification: newArrivalNotification)
         arrivalNotification = newArrivalNotification
         return true
     }
-    
+
+    /// Removes any existing arrival notifications.
     private func removeArrivalNotification() {
+        // Remove all existing notifications
         notificationService.removeAllNotification()
+
+        // Clear the arrival notification and its data
         arrivalNotification = nil
         arrivalNotificationData = nil
     }
-    
+
+    /// Converts the arrival notification object to Data for storage.
+    /// - Parameters:
+    ///    - notification: The arrival notification to be converted to Data.
+    /// - Returns: A Data object representing the arrival notification, or nil if conversion fails.
     private func toData(notification: ArrivalNotification) -> Data? {
         guard let data = try? JSONEncoder().encode(notification) else {
             return nil
         }
         return data
     }
-    
+
+    /// Retrieves the arrival notification object from the provided Data.
+    /// - Parameters:
+    ///    - data: The Data object representing the arrival notification.
+    /// - Returns: An ArrivalNotification object decoded from the provided Data, or nil if decoding fails.
     private func getNotification(data: Data?) -> ArrivalNotification? {
         guard let data = data, let arrivalNotification = try? JSONDecoder().decode(ArrivalNotification.self, from: data) else {
             return nil
         }
         return arrivalNotification
     }
-    
+
+    /// Checks if an arrival alert exists for a specific bus stop.
+    /// - Parameters:
+    ///    - busStopId: The ID of the bus stop to be checked.
+    /// - Returns: A boolean value indicating whether an arrival alert exists for the specified bus stop.
     private func hadAlert(busStopId: Int) -> Bool {
         if arrivalNotification?.tripId == tripVM.tripId && arrivalNotification?.busStopId == busStopId {
             return true
