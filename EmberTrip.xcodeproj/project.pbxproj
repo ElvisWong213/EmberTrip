@@ -20,7 +20,7 @@
 		AAA5FD152B2F4FE000C1DC47 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FD142B2F4FE000C1DC47 /* HomeViewModelTests.swift */; };
 		AAA5FD1B2B2F952500C1DC47 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FD1A2B2F952500C1DC47 /* NotificationService.swift */; };
 		AAA5FD1D2B2FA7F500C1DC47 /* ArrivalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FD1C2B2FA7F500C1DC47 /* ArrivalNotification.swift */; };
-		AAA5FD1F2B2FC58400C1DC47 /* BusStopsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FD1E2B2FC58400C1DC47 /* BusStopsListViewModel.swift */; };
+		AAA5FD212B2FCBD200C1DC47 /* BannerMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FD202B2FCBD200C1DC47 /* BannerMessage.swift */; };
 		AAD31D582B2A28EF00EE8410 /* EmberTripApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D572B2A28EF00EE8410 /* EmberTripApp.swift */; };
 		AAD31D5A2B2A28EF00EE8410 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD31D592B2A28EF00EE8410 /* HomeView.swift */; };
 		AAD31D5C2B2A28F000EE8410 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD31D5B2B2A28F000EE8410 /* Assets.xcassets */; };
@@ -67,7 +67,7 @@
 		AAA5FD142B2F4FE000C1DC47 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		AAA5FD1A2B2F952500C1DC47 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		AAA5FD1C2B2FA7F500C1DC47 /* ArrivalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalNotification.swift; sourceTree = "<group>"; };
-		AAA5FD1E2B2FC58400C1DC47 /* BusStopsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopsListViewModel.swift; sourceTree = "<group>"; };
+		AAA5FD202B2FCBD200C1DC47 /* BannerMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerMessage.swift; sourceTree = "<group>"; };
 		AAD31D542B2A28EF00EE8410 /* EmberTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmberTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD31D572B2A28EF00EE8410 /* EmberTripApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmberTripApp.swift; sourceTree = "<group>"; };
 		AAD31D592B2A28EF00EE8410 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -133,7 +133,6 @@
 			children = (
 				AAD31D9F2B2B635100EE8410 /* TripViewModel.swift */,
 				AAA5FCFB2B2E5B1500C1DC47 /* BusMapViewModel.swift */,
-				AAA5FD1E2B2FC58400C1DC47 /* BusStopsListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -209,6 +208,7 @@
 				AAA5FCF22B2E37CB00C1DC47 /* Cache.swift */,
 				AAA5FD0E2B2E96AD00C1DC47 /* MyLocation.swift */,
 				AAA5FD1C2B2FA7F500C1DC47 /* ArrivalNotification.swift */,
+				AAA5FD202B2FCBD200C1DC47 /* BannerMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -392,6 +392,7 @@
 				AAA5FCF52B2E381D00C1DC47 /* FileManageService.swift in Sources */,
 				AAA5FCF32B2E37CB00C1DC47 /* Cache.swift in Sources */,
 				AAA5FCF12B2E136500C1DC47 /* BannerModifier.swift in Sources */,
+				AAA5FD212B2FCBD200C1DC47 /* BannerMessage.swift in Sources */,
 				AAD31DA02B2B635100EE8410 /* TripViewModel.swift in Sources */,
 				AAD31D702B2A3D0B00EE8410 /* NetworkService.swift in Sources */,
 				AAA5FD1D2B2FA7F500C1DC47 /* ArrivalNotification.swift in Sources */,
@@ -403,7 +404,6 @@
 				AAA5FD002B2E629800C1DC47 /* HomeViewModel.swift in Sources */,
 				AAD31D962B2B411700EE8410 /* BusStopInformationRow.swift in Sources */,
 				AAD31D9D2B2B52B000EE8410 /* TripView.swift in Sources */,
-				AAA5FD1F2B2FC58400C1DC47 /* BusStopsListViewModel.swift in Sources */,
 				AAD31D582B2A28EF00EE8410 /* EmberTripApp.swift in Sources */,
 				AAA5FD0F2B2E96AD00C1DC47 /* MyLocation.swift in Sources */,
 				AAD31D8E2B2B350300EE8410 /* MyURLRequestProtocol.swift in Sources */,

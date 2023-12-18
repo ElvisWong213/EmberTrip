@@ -9,17 +9,19 @@ import SwiftUI
 import MapKit
 
 struct BusStopsListView: View {
-    @EnvironmentObject var TripVM: TripViewModel
+    @EnvironmentObject var tripVM: TripViewModel
     @State private var showActualTime = false
+    @State private var arrivalNotification: ArrivalNotification?
+    
     private let notificationService = NotificationService()
     @AppStorage("arrivalNotification") var arrivalNotificationData: Data?
-    @State private var arrivalNotification: ArrivalNotification?
     
     var body: some View {
         NavigationStack {
             ScrollViewReader { proxy in
-                if let routes = TripVM.routes {
-                    List(routes, selection: $TripVM.selectedStopId) { stop in
+                if let routes = tripVM.routes {
+                    List(routes, selection: $tripVM.selectedStopId) { stop in
+                        // List items
                         stopView(stop: stop)
                         .id(stop.id)
                         .onTapGesture {
@@ -28,10 +30,21 @@ struct BusStopsListView: View {
                         .swipeActions(edge: .leading) {
                             Button {
                                 if hadAlert(busStopId: stop.id) {
+                                    // Arady created notification
+                                    // Remove all notification
                                     removeArrivalNotification()
+                                    tripVM.bannerMessageType = .RemoveAlert
                                 } else {
-                                    createArrivalNotification(stop: stop)
+                                    // Create Notification
+                                    if createArrivalNotification(stop: stop) {
+                                        // Success
+                                        tripVM.bannerMessageType = .SetAlert
+                                    } else {
+                                        // Fail
+                                        tripVM.bannerMessageType = .FailToSetAlert
+                                    }
                                 }
+                                tripVM.showBanner = true
                             } label: {
                                 Image(systemName: hadAlert(busStopId: stop.id) ? "bell.slash" : "bell")
                             }
@@ -42,7 +55,7 @@ struct BusStopsListView: View {
                         setupInitialSelectedStop(proxy)
                         arrivalNotification = getNotification(data: arrivalNotificationData)
                     }
-                    .onChange(of: TripVM.selectedStopId) {
+                    .onChange(of: tripVM.selectedStopId) {
                         scrollToSelectedStop(proxy)
                     }
                 } else {
@@ -77,7 +90,9 @@ struct BusStopsListView: View {
                                   hadAlert: hadAlert(busStopId: stop.id))
         }
     }
-    
+}
+
+extension BusStopsListView {
     // MARK: - Bus Stops
     
     /// Selects a stop based on the provided latitude, longitude, and stop ID.
@@ -92,15 +107,15 @@ struct BusStopsListView: View {
         let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
         withAnimation {
             // Sets the camera position to the selected stop's location on the map and updates the selected stop ID.
-            TripVM.cameraPosition = .item(MKMapItem(placemark: MKPlacemark(coordinate: coordinate)))
-            TripVM.selectedStopId = id
+            tripVM.cameraPosition = .item(MKMapItem(placemark: MKPlacemark(coordinate: coordinate)))
+            tripVM.selectedStopId = id
         }
     }
 
     /// Retrieves the ID of the next stop.
     /// - Returns: The unique identifier of the next stop if available; otherwise, returns nil.
     private func getNextStopId() -> Int? {
-        guard let stops = TripVM.routes else {
+        guard let stops = tripVM.routes else {
             return nil
         }
         let estimatedTimes = stops.compactMap{ $0.arrival.estimated?.toDate() }.map { Float(Date.now.distance(to: $0)) }
@@ -123,7 +138,7 @@ struct BusStopsListView: View {
         }
         withAnimation {
             // Updates the selected stop ID to the next stop and scrolls to it using the provided scrollView proxy.
-            TripVM.selectedStopId = nextStopId
+            tripVM.selectedStopId = nextStopId
             proxy.scrollTo(nextStopId)
         }
     }
@@ -134,14 +149,15 @@ struct BusStopsListView: View {
     private func scrollToSelectedStop(_ proxy: ScrollViewProxy) {
         withAnimation {
             // Scrolls to the selected stop using the provided scrollView proxy.
-            proxy.scrollTo(TripVM.selectedStopId)
+            proxy.scrollTo(tripVM.selectedStopId)
         }
     }
     
     // MARK: - Notification
+    
     private func createArrivalNotification(stop: Route) -> Bool {
         removeArrivalNotification()
-        let newArrivalNotification: ArrivalNotification = ArrivalNotification(id: UUID(), tripId: TripVM.tripId, busStopId: stop.id)
+        let newArrivalNotification: ArrivalNotification = ArrivalNotification(id: UUID(), tripId: tripVM.tripId, busStopId: stop.id)
         let calendar = Calendar.current
         guard let arrivalDate = stop.arrival.scheduled.toDate(), let triggerDate = calendar.date(byAdding: .minute, value: -5, to: arrivalDate) else {
             return false
@@ -176,7 +192,7 @@ struct BusStopsListView: View {
     }
     
     private func hadAlert(busStopId: Int) -> Bool {
-        if arrivalNotification?.tripId == TripVM.tripId && arrivalNotification?.busStopId == busStopId {
+        if arrivalNotification?.tripId == tripVM.tripId && arrivalNotification?.busStopId == busStopId {
             return true
         }
         return false

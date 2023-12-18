@@ -31,7 +31,7 @@ struct BannerModifier: ViewModifier {
                         }
                         // Banner background
                         .padding()
-                        .background(.red)
+                        .background(messageType.color)
                         .cornerRadius(15)
                         Spacer()
                     }
@@ -59,36 +59,6 @@ struct BannerModifier: ViewModifier {
     }
 }
 
-enum BannerMessage {
-    case NetworkError, MoreInfo
-    
-    var title: String {
-        switch self {
-        case .NetworkError:
-            return "Network Error"
-        case .MoreInfo:
-            return "Offline Mode Enable"
-        }
-    }
-    
-    var body: LocalizedStringKey {
-        switch self {
-        case .NetworkError:
-            return "Please check your internet connection and try again later."
-        case .MoreInfo:
-            return "The Bus Map Offline Mode enables users to access bus routes and information without an internet connection.\n**However, it may not provide accurate information.**"
-        }
-    }
-    
-    var duration: Double {
-        switch self {
-        case .NetworkError:
-            return 2.5
-        case .MoreInfo:
-            return 10
-        }
-    }
-}
 
 extension View {
     func banner(showBanner: Binding<Bool>, messageType: BannerMessage) -> some View {
