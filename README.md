@@ -58,3 +58,4 @@ Users can restore the previous section when they accidentally close the app or i
    - Or change the swip gesture to a button.
 3. Bus Stops List View
    - Simplify the user interface to ensure it is not overwhelming.
+4. Unit test in NotificationService
