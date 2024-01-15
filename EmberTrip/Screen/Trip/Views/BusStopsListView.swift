@@ -60,7 +60,8 @@ struct BusStopsListView: View {
                         scrollToSelectedStop(proxy)
                     }
                 } else {
-                    Text("Oops, looks like there's no data...")
+                    Text("Please wait, we are retrieving the data.")
+                    ProgressView()
                 }
             }
             .toolbar {

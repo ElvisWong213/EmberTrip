@@ -13,44 +13,42 @@ struct BusMapView: View {
     @StateObject var viewModel: BusMapViewModel = BusMapViewModel()
     
     var body: some View {
-        GeometryReader { geo in
-            ZStack(alignment: .top) {
-                Map(position: $combineMapListVM.cameraPosition, selection: $combineMapListVM.selectedStopId) {
-                    // Bus stop markers
-                    ForEach(viewModel.stops) { stop in
-                        Marker(coordinate: stop.coordinate) {
-                            Text(stop.name)
-                        }
-                        .tag(stop.id)
+        ZStack(alignment: .top) {
+            Map(position: $combineMapListVM.cameraPosition, selection: $combineMapListVM.selectedStopId) {
+                // Bus stop markers
+                ForEach(viewModel.stops) { stop in
+                    Marker(coordinate: stop.coordinate) {
+                        Text(stop.name)
                     }
-                    if viewModel.busLocation != nil {
-                        // Bus Location
-                        Annotation("BUS", coordinate: viewModel.busLocation!, anchor: .bottom) {
-                            ZStack {
-                                Circle()
-                                    .foregroundStyle(.indigo.opacity(0.5))
-                                    .frame(width: 80, height: 80)
-                                
-                                Image(systemName: "bus")
-                                    .symbolEffect(.pulse.byLayer)
-                                    .padding()
-                                    .foregroundStyle(.white)
-                                    .background(Color.indigo)
-                                    .clipShape(Circle())
-                            }
-                        }
-                    }
-                    // Show routes
-                    if !viewModel.routes.isEmpty {
-                        ForEach(viewModel.routes, id: \.self) { route in
-                            MapPolyline(route)
-                                .stroke(.blue, lineWidth: 10)
+                    .tag(stop.id)
+                }
+                if viewModel.busLocation != nil {
+                    // Bus Location
+                    Annotation("BUS", coordinate: viewModel.busLocation!, anchor: .bottom) {
+                        ZStack {
+                            Circle()
+                                .foregroundStyle(.indigo.opacity(0.5))
+                                .frame(width: 80, height: 80)
+                            
+                            Image(systemName: "bus")
+                                .symbolEffect(.pulse.byLayer)
+                                .padding()
+                                .foregroundStyle(.white)
+                                .background(Color.indigo)
+                                .clipShape(Circle())
                         }
                     }
                 }
-                BusMapTitleBar()
-                    .environmentObject(viewModel)
+                // Show routes
+                if !viewModel.routes.isEmpty {
+                    ForEach(viewModel.routes, id: \.self) { route in
+                        MapPolyline(route)
+                            .stroke(.blue, lineWidth: 10)
+                    }
+                }
             }
+            BusMapTitleBar()
+                .environmentObject(viewModel)
         }
         .toolbar(.hidden, for: .navigationBar)
         .onChange(of: combineMapListVM.cameraPosition) { oldValue, newValue in
@@ -58,14 +56,13 @@ struct BusMapView: View {
                 viewModel.cameraLockToBus = false
             }
         }
+        .onChange(of: combineMapListVM.routes) {
+            loadBusStops()
+            viewModel.calculateAllRoutes()
+        }
         .onChange(of: combineMapListVM.vehicle?.gps) {
             viewModel.updateBusLocation(newLocation: combineMapListVM.vehicle?.gps)
             updateCameraPosition()
-        }
-        .onAppear() {
-            viewModel.updateBusLocation(newLocation: combineMapListVM.vehicle?.gps)
-            loadBusStops()
-            viewModel.calculateAllRoutes()
         }
     }
     

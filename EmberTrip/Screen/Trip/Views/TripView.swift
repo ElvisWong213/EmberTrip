@@ -21,21 +21,15 @@ struct TripView: View {
 
     var body: some View {
         VStack {
-            if viewModel.routes != nil && viewModel.vehicle != nil {
-                // Map View
-                BusMapView()
-                // Using sheet to show all the bus stops in a list
-                    .sheet(isPresented: .constant(true), content: {
-                        BusStopsListView()
-                            .presentationDetents([.fraction(0.8), .fraction(0.4), .fraction(0.1)])
-                            .presentationBackgroundInteraction(.enabled)
-                            .interactiveDismissDisabled()
-                        
-                    })
-            } else {
-                // Loading Screen
-                ProgressView()
-            }
+            BusMapView()
+            // Using sheet to show all the bus stops in a list
+                .sheet(isPresented: .constant(true), content: {
+                    BusStopsListView()
+                        .presentationDetents([.fraction(0.8), .fraction(0.4), .fraction(0.1)])
+                        .presentationBackgroundInteraction(.enabled)
+                        .interactiveDismissDisabled()
+                    
+                })
         }
         .banner(showBanner: $viewModel.showBanner, messageType: viewModel.bannerMessageType)
         .environmentObject(viewModel)
