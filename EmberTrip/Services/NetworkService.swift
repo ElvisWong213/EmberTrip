@@ -36,6 +36,7 @@ class NetworkService {
             
             // If the response is invalid, throw an invalid response error
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode >= 200 && httpResponse.statusCode < 300 else {
+                print(response)
                 throw NetworkError.InvalidResponse
             }
             return data
