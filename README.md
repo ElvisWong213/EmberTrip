@@ -32,7 +32,7 @@ Users are able to access bus routes and information even when they lose internet
 [](https://github.com/ElvisWong213/EmberTrip/assets/40566101/69ff595f-53ed-4dfc-8fd2-b1fc0df9afa5)
 
 ### Arrival Notification
-The arrival notification feature will remind the user when they are nearing their intended destination, ensuring they never miss their stop.
+The arrival notification feature will remind you when you are nearing your intended destination, ensuring you never miss your stop.
 <p>
   <img src="https://github.com/ElvisWong213/EmberTrip/assets/40566101/614fac16-18dc-48bd-9b14-6c2982c46297" width="200"/>
   <img src="https://github.com/ElvisWong213/EmberTrip/assets/40566101/7b68a7ec-9c54-424f-9711-1e4c1bf380ca" width="200"/>
